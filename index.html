@@ -37,22 +37,43 @@
 		</div>		
 		<div class="span1">One-offs
 		</div>		
-		
+		<div class="span3">
+			<h3>Total by <!-- ko text : selectedCategory --><!-- /ko -->:<span class="badge badge-success" style="font-size: 20px; line-height: 25px;" data-bind="text : total"></span></h3>
+		</div>	
 	</div>
 	<div class="row-fluid">
-		<div class="span4">
-<ul class="nav nav-pills nav-stacked" data-bind="foreach : categories">
-      <li  data-bind="css : { active : $data== $parent.selectedCategory() }, click : function(c) { $parent.selectedCategory(c) }"><a href="#" data-bind="text : $data"></a></li>
-    </ul>
-
+		<div class="span2">
+<div class="sidebar-nav">
+	<div class="well" style="width:300px; padding: 8px 0;">
+		<ul class="nav nav-list"> 
+		  <li class="nav-header">Categories</li>     
+		  <!-- ko foreach : categories -->   
+		  <li data-bind="css : { active : name== $parent.selectedCategory() }, click : function(c) { $parent.selectedCategory(c.name) }">
+		  	<a href="#" >
+		  		<!-- ko text : name --><!-- /ko -->
+		  		<!-- ko if:isCompleted -->
+		  		<i class="icon-ok"></i> 
+		  		<!-- /ko -->
+		  	</a>
+		  </li>
+		  <!-- /ko -->
+		</ul>
+	</div>
+	<div class="alert alert-error" data-bind="visible : hasErrors">
+              <strong>Check your inputs data!</strong> £ should be digits and Frequency should be set.
+            </div>
+</div>
 		</div>
-		<div class="span8">
+		<div class="span10">
 
 	<ul class="nav nav-pills" data-bind="foreach : members">
 	  <li  data-bind="css : { active : $data == $parent.selectedMember() }">
 	    <a href="#" data-bind="text : $data, click : $parent.selectMember">Home</a>
 	  </li>
 	</ul>
+
+
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -60,27 +81,28 @@
 				<th>Name</th>
 				<th>£</th>
 				<th>Frequency</th>
-				
+				<th>In month</th>
 			</tr>
 		</thead>
-		<tbody data-bind="foreach : sortedIncome">
+		<tbody data-bind="foreach : visableIncome">
 			<tr  data-bind="css : { error : !isValid() }">
 				<td>
-					<a class="btn btn-mini" href="#" data-bind="click : $parent.copyIncome"><i class="icon-plus-sign"></i> Copy</a>
+					<a class="btn btn-mini" href="#" data-bind="click : $parent.copyIncome, css : { 'disabled' : $parent.categoryAlreadyFinished }"><i class="icon-plus-sign"></i> Copy</a>
 					<!-- ko if: canDelete -->
-						<a class="btn btn-mini btn-danger" href="#" data-bind="click : $parent.removeIncome"><i class="icon-minus-sign icon-white"></i> Remove</a>
+						<a class="btn btn-mini btn-danger" href="#" data-bind="click : $parent.removeIncome, css : { 'disabled' : $parent.categoryAlreadyFinished }"><i class="icon-minus-sign icon-white"></i> Remove</a>
 					<!-- /ko -->
 				</td>
 				<td data-bind="text : name"></td>
-				<td><input type="text" data-bind="value : value"/></td>
-				<td><select data-bind="options : $parent.frequencyVariants, optionsCaption : 'frequency', value : frequency"></select></td>
+				<td><input type="text" data-bind="value : value, disable : $parent.categoryAlreadyFinished"/></td>
+				<td><select data-bind="options : $parent.frequencyVariants, optionsCaption : 'frequency', value : frequency, disable : $parent.categoryAlreadyFinished"></select></td>
+				<td data-bind="text : resultInMonth"></td>
 			</tr>	
 		</tbody>
 	</table>
-	<a href="#" class="btn btn-warning pull-left" data-bind="click : addAnother"> Add another Earned loan type</a>
+	<a href="#" class="btn btn-warning pull-left" data-bind="click : addAnother, css : { 'disabled' : categoryAlreadyFinished }"> Add another <!-- ko text : selectedCategory --><!-- /ko --> type</a>
 
 	<a href="#" class="btn btn-info pull-right"   data-bind="click : skip">Skip</a>
-	<a href="#" class="btn btn-success pull-right" style="margin-right: 10px;"  data-bind="click : next">Finished-next</a>
+	<a href="#" class="btn btn-success pull-right" style="margin-right: 10px;"  data-bind="click : next, css : { 'disabled' : hasErrors() || categoryAlreadyFinished()}">Finished-next</a>
 	
 
 		</div>		
