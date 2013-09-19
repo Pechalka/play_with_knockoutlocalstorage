@@ -9,8 +9,6 @@ var Income = function(data, cb){
 
 	self.canDelete = data.canDelete;
 
-
-
 	self.isValid = ko.computed(function(){
 		if (self.value() == '0') return true;
 
@@ -27,7 +25,7 @@ var Income = function(data, cb){
 			'year' : 0.8333333333333334
 		};
 
-		alert('should be saved')
+		console.log('should be saved')
 
 		return (parseFloat(self.value(), 10) * factor[self.frequency()]).toFixed(2); 
 	})
@@ -45,28 +43,28 @@ function guid() {
          s4() + '-' + s4() + s4() + s4();
 }
 
-var Page = function(incomes, members, categories){
+var IncomeViewModel = function(){
 		var self = this;
 
-		self.incomesStorage = ko.observableArray(incomes, {persist: 'yor.income'});
+		
+		self.incomes = ko.observableArray([], {persist: 'yor.income'});
+		self.members = ko.observableArray([], {persist: 'yor.members'});
+		
+		var categories = [];		
+		for(var category in testData){
+			categories.push({ name : category, isCompleted : false });
+		}		
 
-		self.incomes = ko.observableArray(incomes, {persist: 'yor.income'});
-		self.members = ko.observableArray(members, {persist: 'yor.members'});
-		categories = ko.utils.arrayMap(categories, function(c){ return { name : c, isCompleted : false }; })
-		
-		self.categoriesStorage = ko.observableArray(categories, {persist: 'yor.categories'});
-		
+		self.categoriesStorage = ko.observableArray(categories, {persist: 'yor.categories'});	
 		self.categories = ko.computed( function(){
 			return ko.utils.arrayMap(self.categoriesStorage(), function(c){ return { name : c.name, isCompleted : ko.observable(c.isCompleted) }; })
 		})
-
-		//ko.observableArray(categories);
 		
 		self.selectedCategory = ko.observable('Earned Income', {persist: 'yor.selectedCategory'});
 		self.frequencyVariants = ['day', 'week', 'month', 'year'];
 
 
-		self.selectedMember = ko.observable(members[0], {persist: 'yor.member'});
+		self.selectedMember = ko.observable(self.members()[0], {persist: 'yor.member'});
 		self.selectMember = function(member){
 			self.selectedMember(member);
 		}
@@ -76,18 +74,11 @@ var Page = function(incomes, members, categories){
 		self.visableIncome = ko.computed(function(){
 			var f =  ko.utils.arrayFilter(self.incomes(), function(_) { return _.category == self.selectedCategory() && _.member == self.selectedMember(); });
 			var sorted = f.sort(function(a, b){ return a.name < b.name ? 1 : -1; });
-			return ko.utils.arrayMap(sorted, function(i){ return new Income(i, function(){ 
-				//self.incomes( self.incomes)
-			}); });
-			
+			return ko.utils.arrayMap(sorted, function(i){ return new Income(i); });		
 		})
 		
 
 		var addIncome = function(name){
-			if (self.categoryAlreadyFinished()){
-				alert('This category already finished')
-				return;
-			}
 			self.incomes.push({ name : name, canDelete : true, id : guid(), category : self.selectedCategory(), member : self.selectedMember() });	
 		}
 
@@ -168,68 +159,6 @@ var Page = function(incomes, members, categories){
 		self.skip = function(){
 			nextCategory(false);
 		}
+
+		self.template = 'income-page';
 	}
-
-	$(function() {
-		var testData = {
-            "Earned Income" : ["Take Home Pay",
-                               "Bonus",
-                               "Overtime",
-                               "Commission",
-                               "Profit Share",
-                               "Dividends",
-                               "Expenses",
-                               "Allowances"]   ,
-            "Benefit Income":[
-                "Working Tax Credit",
-                "Child Tax Credit",
-                "Job Seekers Allowance",
-                "Child Benefit",
-                "Income Support",
-                "Housing Benefit",
-                "Disability Living Allowance",
-                "Carers Allowance"
-            ],
-            "Investment Income":[
-                "Rental Income",
-                "Investment Bonds",
-                "ISA Income",
-                "Share Dividends",
-                "Bank Account Interest"
-            ],
-            "Retirement Income":[
-                "Company Pension",
-                "Personal Pension",
-                "Widows Pension",
-                "State Pension",
-                "State 2nd Pension",
-                "AVC Pension"
-            ],
-            "Miscellaneous Income":[
-                "Maintenance Income",
-                 "IOU Income"
-            ]
-
-        };
-
-		var members = ['Mrs. Tommie Koelpin', 'Laurence Medhurst', 'Aylin Prohaska'];
-		var categories = [];
-
-		var incomes = [];
-
-		for(var category in testData){
-			categories.push(category);
-		}
-
-		for (var n = 0; n < members.length; n++) {
-			for(var category in testData){
-				var incomyTypes = testData[category];
-				for (var i = 0; i < incomyTypes.length; i++) {
-					incomes.push({ name : incomyTypes[i], canDelete : false , id : guid(), category : category, member : members[n]});
-				};
-			}
-		}
-
-
-		ko.applyBindings(new Page(incomes, members, categories))
-	})

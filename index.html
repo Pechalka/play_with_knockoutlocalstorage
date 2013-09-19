@@ -7,41 +7,11 @@
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="Faker.js"></script>
-	<script type="text/javascript" src="knockout.localStorage.js"></script>
-
-
-	<script type="text/javascript" src="app.js"></script>
-</head>
-<body>
-<div class='container-fluid'>
-	<div class="row-fluid">
-		<div class="offset2 span7">
-			<div class="progress">
-			  <div class="bar" style="width: 10%;"></div>
-			</div>
-		</div>		
-	</div>
-	<div class="row-fluid">
-		<div class="offset2 span1">Income
-		</div>		
-		<div class="span1">Home
-		</div>		
-		<div class="span1">Transport
-		</div>		
-		<div class="span1">Finances
-		</div>		
-		<div class="span1">Personal
-		</div>		
-		<div class="span1">Annual
-		</div>		
-		<div class="span1">One-offs
-		</div>		
-		<div class="span3">
-			<h3>Total by <!-- ko text : selectedCategory --><!-- /ko -->:<span class="badge badge-success" style="font-size: 20px; line-height: 25px;" data-bind="text : total"></span></h3>
-		</div>	
-	</div>
-	<div class="row-fluid">
+	<script type="text/javascript" src="js/Faker.js"></script>
+	<script type="text/javascript" src="js/knockout.localStorage.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	
+	<script type="text/html" id="income-page" >
 		<div class="span2">
 <div class="sidebar-nav">
 	<div class="well" style="width:300px; padding: 8px 0;">
@@ -64,14 +34,23 @@
             </div>
 </div>
 		</div>
-		<div class="span10">
-
-	<ul class="nav nav-pills" data-bind="foreach : members">
+		<div class="span10" >
+			
+<div  class="row-fluid">
+	<div class="span7">
+<ul class="nav nav-pills" data-bind="foreach : members">
 	  <li  data-bind="css : { active : $data == $parent.selectedMember() }">
 	    <a href="#" data-bind="text : $data, click : $parent.selectMember">Home</a>
 	  </li>
 	</ul>
 
+	
+	</div>
+			<div class="span5">
+			<h3>Total by <!-- ko text : selectedCategory --><!-- /ko -->:<span class="badge badge-success" style="font-size: 20px; line-height: 25px;" data-bind="text : total"></span></h3>
+		</div>
+</div>
+	
 
 
 	<table class="table">
@@ -105,10 +84,73 @@
 	<a href="#" class="btn btn-success pull-right" style="margin-right: 10px;"  data-bind="click : next, css : { 'disabled' : hasErrors() || categoryAlreadyFinished()}">Finished-next</a>
 	
 
+		</div>	
+	</script>
+	<script type="text/template" id="members-page">
+<div class="span2 offset2">
+<div class="row-fluid">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Members</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach : members">
+				<td data-bind="text : $data"></td>
+				<td><a class="btn btn-danger btn-mini" data-bind="click : $parent.removeClick">remove</a></td>
+			</tr>	
+		</tbody>
+	</table>
+	</div>
+	<div class="row-fluid">
+	<div class="input-append">
+	  <input class="span12" id="appendedInputButton" type="text" data-bind="value : name"/>
+	  <button class="btn btn-success" type="button" data-bind="click : addClick">Add</button>
+	  <button class="btn btn-info" type="button" data-bind="click : randomClick">Random</button>
+	</div>
+	</div>
+</div>
+	</script>
+
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/IncomeViewModel.js"></script>
+	<script type="text/javascript" src="js/MembersViewModel.js"></script>
+
+
+	
+</head>
+<body>
+<div class='container-fluid'>
+	<div class="row-fluid">
+		<div class="offset2 span7">
+			<div class="progress">
+			  <div class="bar" style="width: 10%;"></div>
+			</div>
 		</div>		
 	</div>
-	
-
+	<div class="row-fluid">
+		<div class="offset1 span1"><a href="#" data-bind="click : memberClick">Members</a>
+		</div>		
+		<div class="span1"><a href="#" data-bind="click : incomeClick">Income</a>
+		</div>		
+		<div class="span1"><a href="#">Home</a>
+		</div>		
+		<div class="span1">Transport
+		</div>		
+		<div class="span1">Finances
+		</div>		
+		<div class="span1">Personal
+		</div>		
+		<div class="span1">Annual
+		</div>		
+		<div class="span1">One-offs
+		</div>		
+	</div>
+	<div class="row-fluid" data-bind="with : page">
+		<!-- ko template : { name : template } -->
+		<!-- /ko -->
+	</div>
 </div>
 </body>
 </html>
