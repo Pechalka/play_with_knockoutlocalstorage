@@ -28,7 +28,7 @@ var Income = function(data){
 			'day' : 30,
 			'week': 4,
 			'month' : 1,
-			'year' : 0.8333333333333334
+			'year' : 0.08333333333333334
 		};
 
 		if (self.resultInMonth){
