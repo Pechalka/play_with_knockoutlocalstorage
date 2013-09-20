@@ -161,5 +161,9 @@ var IncomeViewModel = function(){
 			nextCategory(false);
 		}
 
+		self.editMemberClick = function(){
+			vent.trigger('editmemberClick');
+		}
+
 		self.template = 'income-page';
 	}

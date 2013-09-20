@@ -29,6 +29,8 @@
 		self.template = 'costs-page';
 	}
 
+	var vent = $({});
+
 	$(function() {
 
 
@@ -56,11 +58,15 @@
 				self.progress(Page.v);
 			})			
 
-			self.pages = ['members', 'Income', 'Home', 'Transport', 'Finances', 'Personal', 'Annual', 'One-offs'];
+			self.pages = ['Income', 'Home', 'Transport', 'Finances', 'Personal', 'Annual', 'One-offs'];
 
 			self.showClick = function(page){
 				self.currentPage(page);			
 			}
+
+			vent.on('editmemberClick', function(){
+				self.currentPage('members');	
+			})
 		}
 
 		ko.applyBindings(new App);
