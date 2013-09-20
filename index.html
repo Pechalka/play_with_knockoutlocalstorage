@@ -29,7 +29,7 @@
 		  <!-- /ko -->
 		</ul>
 	</div>
-	<div class="alert alert-error" data-bind="visible : hasErrors">
+	<div class="alert alert-error" data-bind="visible : hasErrors" >
               <strong>Check your inputs data!</strong> £ should be digits and Frequency should be set.
             </div>
 </div>
@@ -38,11 +38,11 @@
 			
 <div  class="row-fluid">
 	<div class="span7">
-<ul class="nav nav-pills" data-bind="foreach : members">
-	  <li  data-bind="css : { active : $data == $parent.selectedMember() }">
-	    <a href="#" data-bind="text : $data, click : $parent.selectMember">Home</a>
-	  </li>
-	</ul>
+
+
+	<div id="tab" class="btn-group"  data-bind="foreach : members" style="margin-top: 20px;">
+	  <a href="#" class="btn"  data-bind="css : { active : $data == $parent.selectedMember() }, text : $data, click : $parent.selectMember">Prices</a>
+	</div>
 
 	
 	</div>
@@ -153,10 +153,16 @@
 			</div>
 		</div>		
 	</div>
-	<div class="row-fluid" data-bind="foreach : pages">
-		<div class="span1" data-bind="css : { offset1 : $index() == 0 }">
+	<div class="row-fluid" >
+		<!-- <div class="span1" data-bind="css : { offset1 : $index() == 0 }">
 			<a href="#" data-bind="click : $parent.showClick, text : $data"></a>
-		</div>
+		</div> -->
+
+		<ul class="nav nav-pills" data-bind="foreach : pages">
+		  <li  class="span1" data-bind="css : { offset1 : $index() == 0, active : $data == $parent.currentPage() }">
+		    <a href="#" data-bind="click : $parent.showClick, text : $data"></a>
+		  </li>
+		</ul>
 	</div>
 	<div class="row-fluid" data-bind="with : page">
 		<!-- ko template : { name : template } -->

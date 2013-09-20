@@ -36,7 +36,7 @@
 			var self = this;
 
 			self.progress = ko.observable('10%');
-			self.currentPage = ko.observable('income', {persist: 'yor.currentPage'});
+			self.currentPage = ko.observable('Income', {persist: 'yor.currentPage'});
 			self.page = ko.observable(null);
 
 			ko.computed(function(){
