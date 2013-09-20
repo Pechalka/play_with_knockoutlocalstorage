@@ -35,32 +35,32 @@
 		var App = function(){
 			var self = this;
 
-
+			self.progress = ko.observable('10%');
 			self.currentPage = ko.observable('income', {persist: 'yor.currentPage'});
 			self.page = ko.observable(null);
 
 			ko.computed(function(){
 				var pages = {
-					'income' : IncomeViewModel,
-					'members' : MembersViewModel,
-					'costs' : CostsViewModel					
+					'members' : { page : MembersViewModel, v : '0' },
+					'Income' : { page : IncomeViewModel, v : '10%' },
+					'Home' : { page : CostsViewModel, v : '25%' },
+					'Transport': { page : CostsViewModel, v : '40%' }, 
+					'Finances': { page : CostsViewModel, v : '55%' },
+					'Personal': { page : CostsViewModel, v : '70%' }, 
+					'Annual': { page : CostsViewModel, v : '85%' }, 
+					'One-offs': { page : CostsViewModel, v : '100%' },				
 				}
 
 				var Page = pages[self.currentPage()];
-				self.page(new Page);
+				self.page(new Page.page);
+				self.progress(Page.v);
 			})			
 
-			self.costClick = function(){
-				self.currentPage('costs');
-			}
+			self.pages = ['members', 'Income', 'Home', 'Transport', 'Finances', 'Personal', 'Annual', 'One-offs'];
 
-			self.memberClick = function(){
-				self.currentPage('members');
+			self.showClick = function(page){
+				self.currentPage(page);			
 			}
-
-			self.incomeClick = function(){
-				self.currentPage('income');
-			}			
 		}
 
 		ko.applyBindings(new App);

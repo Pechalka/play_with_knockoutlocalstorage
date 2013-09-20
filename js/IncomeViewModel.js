@@ -126,7 +126,6 @@ var IncomeViewModel = function(){
 			if (currentCompeted){
 				categories[ind].isCompleted(true);
 				self.categoriesStorage(ko.toJS(self.categories));
-				//self.categories.valueHasMutated();
 			}
 			ind++;
 
