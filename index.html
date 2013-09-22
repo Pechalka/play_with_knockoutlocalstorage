@@ -7,14 +7,13 @@
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/Faker.js"></script>
-	<script type="text/javascript" src="js/knockout.localStorage.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
-	<script type="text/javascript" src="js/Repository.js"></script>
+	<script type="text/javascript" src="js/libs/Faker.js"></script>
+	<script type="text/javascript" src="js/libs/knockout.localStorage.js"></script>
+	<script type="text/javascript" src="js/Models.js"></script>
 	<script type="text/html" id="income-page" >
 		<div class="span2">
 <div class="sidebar-nav">
-	<div class="well" style="width:300px; padding: 8px 0;">
+	<div class="well" style="margin-top: 50px; padding: 8px 0;">
 		<ul class="nav nav-list"> 
 		  <li class="nav-header">Categories</li>     
 		  <!-- ko foreach : categories -->   
@@ -37,7 +36,7 @@
 		<div class="span10" >
 <div  class="row-fluid">
 		<div class="span12">
-			<h1>Total by <!-- ko text : selectedCategory --><!-- /ko -->: <span class="badge badge-success" style="font-size: 30px; line-height: 35px;" data-bind="text : total"></span></h1>
+			<h1>Income - <!-- ko text : selectedCategory --><!-- /ko -->: <span class="badge badge-success" style="font-size: 30px; line-height: 35px;" data-bind="text : total"></span></h1>
 		</div>
 </div>
 
@@ -118,27 +117,157 @@
 	</script>
 
 <script type="text/template" id="costs-page">
+		<div class="span2">
+<div class="sidebar-nav">
+	<div class="well" style="padding: 8px 0; margin-top: 50px;">
+		<ul class="nav nav-list"> 
+		  <li class="nav-header">Categories</li>     
+		  <!-- ko foreach : categories -->   
+		  <li data-bind="css : { active : name== $parent.selectedCategory() }, click : function(c) { $parent.selectedCategory(c.name) }">
+		  	<a href="#" >
+		  		<!-- ko text : name --><!-- /ko -->
+		  		<!-- ko if:isCompleted -->
+		  		<i class="icon-ok"></i> 
+		  		<!-- /ko -->
+		  	</a>
+		  </li>
+		  <!-- /ko -->
+		</ul>
+	</div>
+	<div class="alert alert-error" data-bind="visible : hasErrors" >
+              <strong>Check your inputs data!</strong> £ should be digits and Frequency should be set.
+            </div>
+</div>
+		</div>
+		<div class="span10" >
+<div  class="row-fluid">
+		<div class="span12">
+			<h1><!-- ko text: title --><!-- /ko --> - <!-- ko text : selectedCategory --><!-- /ko -->: <span class="badge badge-success" style="font-size: 30px; line-height: 35px;" data-bind="text : total"></span></h1>
+		</div>
+</div>
+
+<div  class="row-fluid">
+	<div class="span7">
+
+
+	<div id="tab" class="btn-group"  data-bind="foreach : members" style="margin-top: 20px;">
+	  <a href="#" class="btn"  data-bind="css : { active : $data == $parent.selectedMember() }, text : $data, click : $parent.selectMember">Prices</a>
+	</div>
+
+
+	</div>
+	<div class="span5" style="margin-top: 20px;"><a class="btn pull-right btn-primary" data-bind="click : editMemberClick"><i class="icon-user icon-white"></i> edit members</a></div>
+</div>
+	
+
+
 	<table class="table">
 		<thead>
 			<tr>
-				<th><th>
-				<th>Costs</th>
-				<th></th>
+				<th style="width : 200px"></th>
+				<th>Name</th>
+				<th>£</th>
+				<th>Frequency</th>
+				<th>who cost</th>
+				<th>%</th>				
+				<th>In month</th>
 			</tr>
 		</thead>
-		<tbody data-bind="foreach : costs">
-				<td data-bind="text : nameLow"></td>
-				<td ><input type="text" data-bind="value : name"/></td>
-				<td><a class="btn btn-danger btn-mini" data-bind="click : $parent.removeClick">remove</a></td>
+		<tbody data-bind="foreach : visableIncome">
+			<tr  data-bind="css : { error : !isValid() }">
+				<td>
+					<a class="btn btn-mini" href="#" data-bind="click : $parent.copyIncome, css : { 'disabled' : $parent.categoryAlreadyFinished }"><i class="icon-plus-sign"></i> Copy</a>
+					<!-- ko if: canDelete -->
+						<a class="btn btn-mini btn-danger" href="#" data-bind="click : $parent.removeIncome, css : { 'disabled' : $parent.categoryAlreadyFinished }"><i class="icon-minus-sign icon-white"></i> Remove</a>
+					<!-- /ko -->
+				</td>
+				<td data-bind="text : name"></td>
+				<td><input type="text" data-bind="value : value, disable : $parent.categoryAlreadyFinished"/></td>
+				<td><select data-bind="options : $parent.frequencyVariants, optionsCaption : 'frequency', value : frequency, disable : $parent.categoryAlreadyFinished"></select></td>
+				<td><select data-bind="options : $parent.members"></select></td>
+				<td><input type="text" value="0" /></td>
+				<td data-bind="text : resultInMonth"></td>
 			</tr>	
 		</tbody>
 	</table>
-		<div class="input-append">
-	  		<input class="span12" id="appendedInputButton" type="text" data-bind="value : name"/>
-	  		<button class="btn btn-success" type="button" data-bind="click : addClick">Add</button>
-		</div>
-</script>
+	<a href="#" class="btn btn-warning pull-left" data-bind="click : addAnother, css : { 'disabled' : categoryAlreadyFinished }"> Add another <!-- ko text : selectedCategory --><!-- /ko --> type</a>
 
+	<a href="#" class="btn btn-info pull-right"   data-bind="click : skip">Skip</a>
+	<a href="#" class="btn btn-success pull-right" style="margin-right: 10px;"  data-bind="click : next, css : { 'disabled' : hasErrors() || categoryAlreadyFinished()}">Finished-next</a>
+	
+
+		</div>	
+</script>
+		<script type="text/template" id="result-page">
+<div  class="row-fluid">
+	<div id="tab" class="btn-group"  data-bind="foreach : members" style="margin-top: 20px;">
+	  <a href="#" class="btn"  data-bind="css : { active : $data == $parent.selectedMember() }, text : $data, click : $parent.selectMember">Prices</a>
+	</div>
+</div>
+<div  class="row-fluid">
+	<div class="span4" style=" margin-top: 50px;  padding: 8px 0;">
+			<ul class="nav nav-list"> 
+			  <li class="nav-header">yor Income</li>        
+			  <li data-bind="css : { active : sectedCategory() == 'Income'}">
+			  	<a href="#" data-bind="click : incomeClick"><i class=" icon-arrow-down"></i> Income <span class="badge  pull-right" data-bind="text : incomeSum"></span></a>
+			  </li>
+	          <li class="nav-header">yor Expediture</li>
+	          <!-- ko foreach : expeditures -->
+			  <li data-bind="css : { active : $parent.sectedCategory() == name}">
+			  	<a href="#" data-bind="click : $parent.showCategoryClick">
+			  		<i  data-bind="css : icone"></i> 
+			  		<!-- ko text : name--><!-- /ko --> 
+			  		<span class="badge  pull-right" data-bind="text : sum"></span>
+		  		</a>
+			  </li>
+	          <!-- /ko -->
+			  <li class="divider"></li>
+	          <li >Total</li>
+			</ul>
+	</div>
+
+
+	<div class="span4" style=" margin-top: 50px;  padding: 8px 0;">
+		<table class="table">
+        	<thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+            </thead>
+        	<tbody data-bind="foreach : spep2">
+                <tr style="cursor: pointer;" data-bind="click : $parent.step2Click, css : { info : $parent.sectedCategory2() == name}">
+                  <td data-bind="text : name"></td>
+                  <td data-bind="text : sum()"></td>
+                  <td ><a href="#" data-bind="click : $parent.editClick"><i class="icon-edit"></i> </a></td>
+                </tr>
+          	</tbody>
+        </table>
+	</div>
+
+	<div class="span4" style=" margin-top: 50px;  padding: 8px 0;">
+		<table class="table">
+	          <thead>
+	            <tr>
+	              <th></th>
+	              <th></th>
+	            </tr>
+	          </thead>
+	          <tbody data-bind="foreach:spep3Items">
+	            <tr style="cursor: pointer;">
+	              <td data-bind="text : name"></td>
+	              <td data-bind="text : sum"></td>
+	            </tr>
+	          </tbody>
+	        </table>
+	</div>
+</div>
+
+		</script>
+		<script type="text/javascript" src="js/ResultViewModel.js"></script>
+
+		<script type="text/javascript" src="js/CostsViewModel.js"></script>
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/IncomeViewModel.js"></script>
@@ -150,19 +279,29 @@
 <body>
 <div class='container-fluid'>
 	<div class="row-fluid" >
-		<ul class="nav nav-pills" data-bind="foreach : pages">
-		  <li  class="span1" data-bind="css : { offset2 : $index() == 0, active : $data == $parent.currentPage() }">
-		    <a href="#" data-bind="click : $parent.showClick, text : $data"></a>
-		  </li>
-		</ul>
-	</div>
-	<div class="row-fluid">
-		<div class="offset2 span7">
-			<div class="progress">
-			  <div class="bar" style="width: 10%;" data-bind="style : { width : progress }"></div>
+		<div class="span2">
+			<a href="#" class="thumbnail" data-bind="click : logoClick">
+                <img src="http://placehold.it/320x200">
+              </a>
+		</div>
+		<div class="span10">
+			<div class="row-fluid" >
+				<ul class="nav nav-pills" data-bind="foreach : pages">
+				  <li  class="span1" data-bind="css : {  active : $data == $parent.currentPage() }">
+				    <a href="#" data-bind="click : $parent.showClick, text : $data"></a>
+				  </li>
+				</ul>
 			</div>
-		</div>		
+			<div class="row-fluid">
+				<div class=" span10">
+					<div class="progress">
+					  <div class="bar" style="width: 10%;" data-bind="style : { width : progress }"></div>
+					</div>
+				</div>		
+			</div>
+		</div>
 	</div>
+	
 
 	<div class="row-fluid" data-bind="with : page">
 		<!-- ko template : { name : template } -->

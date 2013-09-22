@@ -1,45 +1,18 @@
-	var Cost = function(json){
-		var self = this;
-		self.name = ko.observable(json.name);
 
-		self.nameLow = ko.computed(function(){
-			return self.name().toLowerCase();
-		});
-	}
-
-	var CostsViewModel = function(){
-		var self = this;
-
-		self.costs = Repository('yor.costs', 
-			function(json){  return new Cost(json)	},
-			function(obj) {  return { name : obj.name() } }
-		);
-
-
-		self.name = ko.observable('');
-
-		self.removeClick =  function(c){
-			self.costs.remove(c);
-		}
-
-		self.addClick = function(){
-			self.costs.push(new Cost({ name : self.name() }));
-		}
-
-		self.template = 'costs-page';
-	}
 
 	var vent = $({});
 
 	$(function() {
-
-
 		var App = function(){
 			var self = this;
 
 			self.progress = ko.observable('10%');
 			self.currentPage = ko.observable('Income', {persist: 'yor.currentPage'});
 			self.page = ko.observable(null);
+
+			self.logoClick = function(){
+				self.currentPage('result');
+			}
 
 			ko.computed(function(){
 				var pages = {
@@ -51,10 +24,11 @@
 					'Personal': { page : CostsViewModel, v : '70%' }, 
 					'Annual': { page : CostsViewModel, v : '85%' }, 
 					'One-offs': { page : CostsViewModel, v : '100%' },				
+					'result' : { page : ResultViewModel, v : '100%' },
 				}
 
 				var Page = pages[self.currentPage()];
-				self.page(new Page.page);
+				self.page(new Page.page(self.currentPage()));
 				self.progress(Page.v);
 			})			
 
@@ -66,6 +40,11 @@
 
 			vent.on('editmemberClick', function(){
 				self.currentPage('members');	
+			})
+
+			vent.on('edit', function(e, caterory){
+				self.currentPage('Income');	
+				self.page().selectedCategory(caterory);
 			})
 		}
 

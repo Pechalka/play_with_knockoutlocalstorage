@@ -1,76 +1,20 @@
 
-var incomeStorage = ko.observableArray([], {persist: 'yor.income'});
 
-var Income = function(data){
-	var self = this;
-
-	self.id = data.id;
-
-	self.name = ko.observable(data.name);
-	self.value = ko.observable(data.value || 0);
-	self.frequency = ko.observable(data.frequency);
-	self.category = data.category;
-	self.member = data.member;
-
-	self.canDelete = data.canDelete;
-
-	self.isValid = ko.computed(function(){
-
-		if (self.value() == '0') return true;
-
-		return /^\d+$/.test(self.value()) && self.frequency() != null;
-	});
-
-	self.resultInMonth = ko.computed(function(){
-		if (self.isValid() == false || self.value() == '0') return 0;
-
-		var factor = {
-			'day' : 30,
-			'week': 4,
-			'month' : 1,
-			'year' : 0.08333333333333334
-		};
-
-		if (self.resultInMonth){
-			if (incomes){
-				console.log('update');
-				incomeStorage(ko.toJS(incomes));
-			}
-		}
-
-		return (parseFloat(self.value(), 10) * factor[self.frequency()]).toFixed(2); 
-	});
-}
-
-
-var incomes = ko.computed( function(){
-		return ko.utils.arrayMap(incomeStorage(), function(c){ return new Income(c); })
-	});
+		
 
 var IncomeViewModel = function(){
 		var self = this;
 
 
-		self.members = ko.observableArray([], {persist: 'yor.members'});
-		
-		var categories = [];		
-		for(var category in testData){
-			categories.push({ name : category, isCompleted : false });
-		}		
-
-		self.categoriesStorage = ko.observableArray(categories, {persist: 'yor.categories'});	
-		self.categories = ko.computed( function(){
-			return ko.utils.arrayMap(self.categoriesStorage(), function(c){ return { name : c.name, isCompleted : ko.observable(c.isCompleted) }; })
-		})
-		
-		self.selectedCategory = ko.observable('Earned Income', {persist: 'yor.selectedCategory'});
-		self.frequencyVariants = ['day', 'week', 'month', 'year'];
-
-
-		self.selectedMember = ko.observable(self.members()[0], {persist: 'yor.member'});
+		self.selectedMember = ko.observable(members()[0], {persist: 'yor.member'});
 		self.selectMember = function(member){
 			self.selectedMember(member);
 		}
+		
+
+		self.selectedCategory = ko.observable('Earned Income', {persist: 'yor.selectedCategory'});
+		self.frequencyVariants = ['day', 'week', 'month', 'year'];
+
 
 
 
@@ -114,22 +58,27 @@ var IncomeViewModel = function(){
 			ko.utils.arrayForEach(self.visableIncome(), function(i){
 				sum += parseFloat(i.resultInMonth(), 10);
 			});
+
+			var c = ko.utils.arrayFirst(categories(), function(c){ return c.name == self.selectedCategory(); });
+			c.sum(sum);
+			categoriesStorage(ko.toJS(categories));
+
 			return sum.toFixed(2);
 		})
 
 		var nextCategory = function(currentCompeted){
-			var categories = self.categories();
-			var category = ko.utils.arrayFirst(categories, function(c){ return c.name == self.selectedCategory();})
+			var __categories = categories();
+			var category = ko.utils.arrayFirst(__categories, function(c){ return c.name == self.selectedCategory();})
 			var ind = categories.indexOf(category);
 			if (ind == categories.length) return;
 
 			if (currentCompeted){
-				categories[ind].isCompleted(true);
-				self.categoriesStorage(ko.toJS(self.categories));
+				__categories[ind].isCompleted(true);
+				categoriesStorage(ko.toJS(__categories));
 			}
 			ind++;
 
-			self.selectedCategory(categories[ind].name);
+			self.selectedCategory(__categories[ind].name);
 		}
 
 		self.hasErrors = ko.computed(function(){
@@ -151,7 +100,7 @@ var IncomeViewModel = function(){
 		}
 
 		self.categoryAlreadyFinished = ko.computed(function(){
-			var category = ko.utils.arrayFirst(self.categories(), function(c){ return c.name == self.selectedCategory();})
+			var category = ko.utils.arrayFirst(categories(), function(c){ return c.name == self.selectedCategory();})
 			if (!category) return false;
 
 			return category.isCompleted();
