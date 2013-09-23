@@ -42,9 +42,10 @@
 				self.currentPage('members');	
 			})
 
-			vent.on('edit', function(e, caterory){
-				self.currentPage('Income');	
-				self.page().selectedCategory(caterory);
+			vent.on('edit', function(e, data){
+				self.currentPage(data.part);	
+				if (data.category)
+					self.page().selectedCategory(data.category);
 			})
 		}
 

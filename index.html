@@ -206,24 +206,39 @@
 </div>
 <div  class="row-fluid">
 	<div class="span4" style=" margin-top: 50px;  padding: 8px 0;">
-			<ul class="nav nav-list"> 
-			  <li class="nav-header">yor Income</li>        
-			  <li data-bind="css : { active : sectedCategory() == 'Income'}">
-			  	<a href="#" data-bind="click : incomeClick"><i class=" icon-arrow-down"></i> Income <span class="badge  pull-right" data-bind="text : incomeSum"></span></a>
-			  </li>
-	          <li class="nav-header">yor Expediture</li>
-	          <!-- ko foreach : expeditures -->
-			  <li data-bind="css : { active : $parent.sectedCategory() == name}">
-			  	<a href="#" data-bind="click : $parent.showCategoryClick">
-			  		<i  data-bind="css : icone"></i> 
-			  		<!-- ko text : name--><!-- /ko --> 
-			  		<span class="badge  pull-right" data-bind="text : sum"></span>
-		  		</a>
-			  </li>
-	          <!-- /ko -->
-			  <li class="divider"></li>
-	          <li >Total</li>
-			</ul>
+			
+		<table class="table">
+        	<thead>
+                <tr>
+                  <th>yor Income</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+            </thead>
+        	<tbody >
+                <tr style="cursor: pointer;" data-bind="click : incomeClick, css : { info : sectedCategory() == 'Income'}">
+                  <td >Income</td>
+                  <td data-bind="text : incomeSum"></td>
+                  <td ><a href="#" data-bind="click : editPartClick.bind($data, { name : 'Income' })"><i class="icon-edit"></i> </a></td>
+                </tr>
+          	</tbody>
+        </table>	
+		<table class="table">
+        	<thead>
+                <tr>
+                  <th>yor Expediture</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+            </thead>
+        	<tbody data-bind="foreach : expeditures">
+                <tr style="cursor: pointer;" data-bind="click : $parent.showCategoryClick, css : { info : $parent.sectedCategory() == name}">
+                  <td data-bind="text : name"></td>
+                  <td data-bind="text : sum"></td>
+                  <td ><a href="#" data-bind="click : $parent.editPartClick" ><i class="icon-edit"></i> </a></td>
+                </tr>
+          	</tbody>
+        </table>
 	</div>
 
 

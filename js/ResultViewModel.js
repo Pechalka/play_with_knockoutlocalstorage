@@ -18,6 +18,10 @@ var ResultViewModel = function() {
 		{ name : 'Annual', icone : 'icon-share', sum : 10},
 		{ name : 'One-offs', icone : 'icon-share' , sum : 10}
 	];
+	
+	self.editPartClick = function(c){
+		vent.trigger('edit', { part : c.name });
+	}
 
 	self.sectedCategory = ko.observable('Income');
 	
@@ -47,7 +51,7 @@ var ResultViewModel = function() {
 	}
 
 	self.editClick = function(c){
-		vent.trigger('edit', c.name);
+		vent.trigger('edit', { part : self.sectedCategory(), category: c.name });
 	}
 
 	self.incomeSum = ko.observable(100);

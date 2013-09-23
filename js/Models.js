@@ -49,12 +49,7 @@ var categoriesStorage = ko.observableArray(_categories, {persist: 'yor.categorie
 var categories = ko.computed( function(){
     return ko.utils.arrayMap(categoriesStorage(), function(c){ return { name : c.name, isCompleted : ko.observable(c.isCompleted), sum : ko.observable(c.sum) }; })
 });
-        
-
-
-var incomeStorage = ko.observableArray([], {persist: 'yor.income'});
-
-
+    
 
 var Income = function(data){
     var self = this;
@@ -96,6 +91,7 @@ var Income = function(data){
     });
 }
 
+var incomeStorage = ko.observableArray([], {persist: 'yor.income'});
 var incomes = ko.computed(function(){
     return ko.utils.arrayMap(incomeStorage(), function(c){ return new Income(c); })
 });
