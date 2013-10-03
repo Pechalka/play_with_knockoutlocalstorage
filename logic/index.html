@@ -87,6 +87,7 @@ $(function() {
 			var all_set = none == null;
 			if (all_set && !part_completed) {
 				part_completed = true;
+				console.log('save { title : top_category_title , id : top_ctegory_id , status : "skip" }');
 				return true;
 			}
 
@@ -94,6 +95,7 @@ $(function() {
 				index = (index + 1) % self.categories.length; 
 				next = self.categories[index];
 				if (next.id == self.selecctedCategoryId()) {// check all items
+					console.log('save { title : top_category_title , id : top_ctegory_id , status : "completed" }');
 					return true;
 				}
 				
