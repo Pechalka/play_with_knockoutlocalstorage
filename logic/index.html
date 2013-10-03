@@ -1,0 +1,124 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+.completed{
+	background-color: green;
+}
+
+.skip {
+	background-color: red;
+}
+
+.selected-category {
+	background-color: yellow;
+}
+
+	</style>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="knockout-min.js"></script>
+	<script type="text/javascript" >
+$(function() {
+
+	var Category = function(data){
+		var self = this;
+		self.title = data.title;
+		self.id = data.id;
+		self.status = ko.observable(data.status || 'none');
+		
+		self.isCompleted = ko.computed(function(){
+			return self.status() == 'completed';
+		});
+
+		self.isSkip = ko.computed(function(){
+			return self.status() == 'skip';
+		})
+
+		self.sync = ko.computed(function(){
+			var status = self.status();
+			if (self.sync) // not send request on init
+				console.log('save { title : "' + self.title +'" , id : ' + self.id +  ', status : "' + self.status() + '"}');
+		})
+
+		self.skip = function(){
+			if (self.status() == 'none')
+				self.status('skip');
+		}
+
+		self.next = function(){
+			self.status('completed');
+		}
+	}
+
+	var Page = function(model){
+		var self = this;
+		self.categories = ko.utils.arrayMap(model, function(m){ return new Category(m); });
+		self.selecctedCategoryId = ko.observable(self.categories[0].id);
+		self.categoriesClick = function(category){
+			self.selecctedCategoryId(category.id);
+		}
+
+		var current_category = function(){
+			return ko.utils.arrayFirst(self.categories, function(c){ return c.id == self.selecctedCategoryId() });
+		}
+
+		var move_to_next_not_completed = function(current){ // return true if exist another not completed item
+			var next;
+			var index = self.categories.indexOf(current);
+			do {
+				index = (index + 1) % self.categories.length; 
+				next = self.categories[index];
+				if (next.id == self.selecctedCategoryId()) {// check all items
+					return false;
+				}	
+				if (next.status() != 'completed'){
+					self.selecctedCategoryId(next.id);
+					return true;
+				}
+			} while(true)
+		}
+
+		self.skipClick = function(){
+			var category = current_category();
+			category.skip();
+			
+			var exist_another_not_completed_item =  move_to_next_not_completed(category);
+			if (!exist_another_not_completed_item)
+				alert('redirect');
+		}
+
+
+		self.nextClick = function(){
+			var category = current_category();		
+			category.next()
+						
+			var exist_another_not_completed_item =  move_to_next_not_completed(category);
+			if (!exist_another_not_completed_item)
+				alert('redirect');
+		}
+	}
+
+
+	var model = [
+		{ id : 1, title : 'home', status : 'none' }, 
+		{ id : 2, title : 'income', status : 'none'}, 
+		{ id : 3, title : 'expediture', status : 'none'},
+		{ id : 4, title : 'transport', status : 'none'},
+		{ id : 5, title : 'finansi', status : 'none'},
+				
+	];
+
+	ko.applyBindings(new Page(model))
+})
+	</script>	
+</head>
+<body>
+	<ul data-bind="foreach : categories">
+		<li data-bind="text : title, click : $parent.categoriesClick, css : { 'selected-category' : id == $parent.selecctedCategoryId(), completed : isCompleted, skip : isSkip }"></li>
+	</ul>
+
+	<a href="#" data-bind="click : skipClick">skip</a>
+	<a href="#" data-bind="click : nextClick">next</a>
+</body>
+</html>
