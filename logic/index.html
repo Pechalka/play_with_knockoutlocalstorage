@@ -63,20 +63,46 @@ $(function() {
 			return ko.utils.arrayFirst(self.categories, function(c){ return c.id == self.selecctedCategoryId() });
 		}
 
+		var part_completed = false;
 		var move_to_next_not_completed = function(current){ // return true if exist another not completed item
 			var next;
 			var index = self.categories.indexOf(current);
-			do {
+			
+			do { //find first none
+				index = (index + 1) % self.categories.length; 
+				next = self.categories[index];
+				if (next.id == self.selecctedCategoryId()) {// check all items					
+					break;
+				}
+				
+				if (next.status() == 'none'){
+					self.selecctedCategoryId(next.id);
+					return true;
+				}
+
+			} while(true)
+
+			//if user skip all first time it can see next category
+			var none = ko.utils.arrayFirst(self.categories, function(c){ return c.status() == 'none'; });
+			var all_set = none == null;
+			if (all_set && !part_completed) {
+				part_completed = true;
+				return false;
+			}
+
+			do { //find first skip
 				index = (index + 1) % self.categories.length; 
 				next = self.categories[index];
 				if (next.id == self.selecctedCategoryId()) {// check all items
 					return false;
-				}	
-				if (next.status() != 'completed'){
+				}
+				
+				if (next.status() == 'skip'){
 					self.selecctedCategoryId(next.id);
 					return true;
 				}
 			} while(true)
+
 		}
 
 		self.skipClick = function(){
