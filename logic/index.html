@@ -64,7 +64,7 @@ $(function() {
 		}
 
 		var part_completed = false;
-		var move_to_next_not_completed = function(current){ // return true if exist another not completed item
+		var move_to_next = function(current){ // return true if should redirect
 			var next;
 			var index = self.categories.indexOf(current);
 			
@@ -77,7 +77,7 @@ $(function() {
 				
 				if (next.status() == 'none'){
 					self.selecctedCategoryId(next.id);
-					return true;
+					return false;
 				}
 
 			} while(true)
@@ -87,19 +87,19 @@ $(function() {
 			var all_set = none == null;
 			if (all_set && !part_completed) {
 				part_completed = true;
-				return false;
+				return true;
 			}
 
 			do { //find first skip
 				index = (index + 1) % self.categories.length; 
 				next = self.categories[index];
 				if (next.id == self.selecctedCategoryId()) {// check all items
-					return false;
+					return true;
 				}
 				
 				if (next.status() == 'skip'){
 					self.selecctedCategoryId(next.id);
-					return true;
+					return false;
 				}
 			} while(true)
 
@@ -109,8 +109,7 @@ $(function() {
 			var category = current_category();
 			category.skip();
 			
-			var exist_another_not_completed_item =  move_to_next_not_completed(category);
-			if (!exist_another_not_completed_item)
+			if (move_to_next(category))
 				alert('redirect');
 		}
 
@@ -119,8 +118,7 @@ $(function() {
 			var category = current_category();		
 			category.next()
 						
-			var exist_another_not_completed_item =  move_to_next_not_completed(category);
-			if (!exist_another_not_completed_item)
+			if (move_to_next(category))
 				alert('redirect');
 		}
 	}
