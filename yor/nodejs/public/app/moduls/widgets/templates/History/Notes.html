@@ -1,0 +1,46 @@
+<script type="text/template" id="note-view">
+<tr data-bind="click : $parent.edit">
+    <td data-bind="text : dateStr"></td>
+    <td >
+        <span data-bind="text : description"></span>
+    </td>
+    <td>
+        <a href="#" data-bind="click : $parent.remove"><img class="table_button" src="/pages/img/suppl_cancel.png"></a>
+    </td>
+</tr>
+</script>
+
+<script type="text/template" id="note-edit">
+<tr >
+    <td ><input style="width: 80px;" data-bind="datepicker : date" type="text" /></td>
+    <td ><input style="padding: 10 0 5 10;width: 380px;" data-bind="value : description"  type="text"/></td>
+    <td>
+        <a href="#" data-bind="click : $parent.save" ><img  class="table_button"  src="/pages/img/plus.png"></a>
+        <a href="#" data-bind="click : $parent.cansel"><img   class="table_button" src="/pages/img/suppl_cancel.png"></a>
+    </td>
+</tr>
+</script>
+
+    <div class="textarea_suppl notes" >
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 110px;">DATES</th>
+                <th style="width: 380px;">NOTES</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- ko template : { name : displayMode, foreach:note  } -->
+            <!-- /ko -->
+            
+            <tr data-bind="click : addNote">
+                <td>click to add</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>

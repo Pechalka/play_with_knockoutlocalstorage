@@ -1,0 +1,55 @@
+<div  data-bind="with : insurance" class="overlay_provide" style="height:362px">
+    <div style="width: 260px;" class="providers_fisrt">
+        <p>
+            <span class="label_product"><strong>Provider</strong></span>
+            <span data-bind="text : provider">Pru Protetc</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Life Assured</strong></span>
+            <span data-bind="text : lifeAssuarence() ? lifeAssuarence() : '-'">Joe & Anne Bloggs</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Payment Date</strong></span>
+            <span data-bind="text : paymentDate">1st</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Frequency</strong></span>
+            <span data-bind="text : frequency() ? frequency() : '-'">Monthly</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Cover</strong></span>
+            <span data-bind="text : cover() ? cover() : '-'">£100,000</span>
+        </p>
+    </div>
+    <div class="providers_second" style="width: 240; overflow: hidden;">
+        <p>
+            <span class="label_product"><strong>Policy Number</strong></span>
+            <span data-bind="text : policyNumber() ? policyNumber() : '-'">1234-5678-9</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Start Date</strong></span>
+            <span data-bind="text : startDate">12/12/2012</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>End Date</strong></span>
+            <span data-bind="text : endDate">13/13/2013</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Payment Amount</strong></span>
+            <span data-bind="text : paymentAmount() ? paymentAmount() : '-'">£22,12</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Paid From</strong></span>
+            <span data-bind="text : paidFrom">Bills Account</span>
+        </p>
+        <p>
+            <span class="label_product"><strong>Purpose</strong></span>
+            <span data-bind="text : purpose() ? purpose() : '-'">Mortgage</span>
+        </p>
+    </div>
+    <div class="clear"><br></div>
+    <!-- ko with : $parent.notes -->
+<!-- ko template : { html : template } -->
+<!-- /ko -->
+<!-- /ko -->
+</div>

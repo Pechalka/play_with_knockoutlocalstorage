@@ -1,0 +1,53 @@
+<script type="text/template" id="income-row">
+        <td class="center" >
+            <a data-bind="text :title, attr : { href : '#/tasks/' + id }"></a>
+        </td>
+        <td class="center" data-bind="text :(complete ? complete : 0) + ' %' ">
+        </td>
+        <td class="center" data-bind="text : dueDate">
+        </td>
+        <td class="center" data-bind="text : linkTo">
+        -
+        </td>
+        <td class="center" data-bind="text : reminder">
+        </td>
+        <td class="center" data-bind="text : startDate">
+        </td>
+        <td class="center" >
+        	<a href="#" data-bind="click : $parent.delete">delete</a>
+        </td>
+        
+</script>
+
+<div class="income_bckgr">
+    <div class="income_top">
+        <span class="image"></span>
+        <div class="inline title_text">
+            <p class="title">Tasks</p>
+        </div>
+    </div>
+    <div class="inputs button fright">
+        <input type="submit" class="button_inp" value="Add task" data-bind="click : add" />
+    </div>
+</div>
+
+<div style="width: 900px" class="fixHeight">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%"
+data-bind="dataTable: { 
+    instance :  oTable,
+    options : {
+         sScrollY: '271px',
+         bPaginate: true,
+         bProcessing: true,
+         bInfo : false,
+         bServerSide: true,
+         bLengthChange  : false,
+         bScrollCollapse: false,
+         sAjaxSource : '/task/listTask' ,
+         aoColumns : columns,
+         buildRow : buildRow,
+         rowTemplate : 'income-row'
+        }
+    }">
+</table>
+</div>

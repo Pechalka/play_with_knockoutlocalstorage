@@ -1,0 +1,90 @@
+<div class="address_cont" data-bind='validationOptions: { insertMessages: false }'>
+    <div class="fleft">
+        <p class="task"><strong><a href="#/tasks/new" ><img class="vertical" src="/pages/img/plus.png">ADD A TASK </a></strong></p>
+    </div>
+    <div class="fright">
+        <ul class="menu_supplier">
+            <li><a href="#"><img src="/pages/img/suppl_hat.png"></a></li>
+            <li><a href="#"><img src="/pages/img/suppl_print.png"></a></li>
+            <li><a href="#"><img src="/pages/img/suppl_conv.png"></a></li>
+            <li><a href="#"><img src="/pages/img/suppl_cancel.png"></a></li>
+            <li><a href="#"><img src="/pages/img/suppl_message.png"></a></li>
+            <li><a href="#"><img src="/pages/img/suppl_kino.png"></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="contacts_item">
+        <div class="left_right" id="add_task_form" >
+            <div class="fleft">
+                <div>
+                    <p data-bind="validationMessage: title" class="validationMessage" style="float:left">Enter correct data format.</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="edit_info adress_page">
+                    <span class="names_task">Title:</span>
+                    <input data-bind="value : title " type="text" >
+                </div>
+                <div class="edit_info">
+                    <span class="fleft names_task">Link to:</span>
+                    <select data-bind="options : members, optionsCaption : 'Please select...', value : linkTo, optionsText : memberName, optionsValue : memberName">
+                    </select>
+                </div>
+                <div>
+                    <span data-bind="visible : dateDeaposonInvalid" class="validationMessage" style="float:right">start date must be less than due date</span>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <span data-bind="visible : startDateInvalid" class="validationMessage" style="float:right">Enter correct data format.</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="edit_info"  id="date">
+                    <span class="names_task">Start date:</span>
+                        <input  maxlength="2" type="text" placeholder="DD" data-bind="value : startDay" class="input_norm date">
+                        <input  maxlength="2" type="text" placeholder="MM" data-bind="value : startMonth" class="input_norm month">
+                        <input  maxlength="4" type="text" placeholder="YYYY" data-bind="value : startYear"  class="input_norm year">
+                </div>
+                <div>
+                    <span data-bind="visible : dueDateInvalid" class="validationMessage" style="float:right">Enter correct data format.</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="edit_info"  id="date2">
+                    <span class="names_task">Due Date</span>
+                    <input maxlength="2" type="text" data-bind="value : dueDay" placeholder="DD" class="input_norm date">
+                    <input  maxlength="2" type="text" data-bind="value : dueMonth" placeholder="MM" class="input_norm month">
+                    <input  maxlength="4" type="text"  data-bind="value : dueYear" placeholder="YYYY"  class="input_norm year">
+                </div>
+                <div class="edit_info">
+                    <span class="names_task">% Complete:</span>
+                    <select data-bind="optionsCaption : 'Please select...', options: procents, value : complete">
+                    </select>
+                </div>
+                <div class="edit_info">
+                    <span class="names_task">Reminder:</span>
+                    <select data-bind="options : reminderList, optionsCaption : 'Days before...', value : reminder">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="fright task_btns">
+                <div class="inputs">
+                    <input type="button" value="Reoccurence" class="butt_add">
+                </div>
+                <div class="inputs">
+                    <input type="button" value="Attach" class="butt_add">
+                </div>
+            </div>
+            <div id="edit-task-save-holder">
+                <div class="inputs">
+                    <input data-bind="click : saveTask" type="button" value="save" class="butt_add">
+                </div>
+            </div>
+        </div>
+        
+            <!-- ko with : notes -->
+            <!-- ko template : { html : template } -->
+            <!-- /ko -->
+            <!-- /ko -->
+    </div>
+</div>

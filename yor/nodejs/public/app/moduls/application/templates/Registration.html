@@ -1,0 +1,117 @@
+
+		<div class="bckg_page ">
+			<div id="header">
+				<div id="logo"><a href="#"></a></div>
+            <!--     <div id="exit"><a class="sub exit_btn" href="#">EXIT</a></div> -->
+			</div>
+			<div id="content" class="start_up">
+				<div class="title_form"><span class="title">Y&ouml;r - Start-up Wizard</span></div>
+				<div class="bckgr_full">
+                    <div class="reg_all">
+                        <div id="left_content_register" class="reg1_cont">
+                            <div class="title_left_content">
+                                <span class="image"></span>
+                                <div class="title_left_main start_title_reg">Registration Wizard</div>
+                            </div>
+                            <div id="form_registration">
+                                <form action="" method="" id="reg_form" class="overflo" >
+                                    <div class="left_form">
+                                        <div class="inputs">
+                                            <label for="name" class="name_field_input">First name</label>
+                                            <input type="text" value="" id="name" class="input_field" data-bind="value : firstName"/>
+                                        </div>
+                                        <div class="inputs">
+                                            <label for="lname" class="name_field_input">Last name</label>
+                                            <input id="lname" type="text" value="" class="input_field" data-bind="value : lastName"/>
+                                        </div>
+
+                                        <div class="inputs">
+                                            <label for="date" class="">Date of birth</label>
+                                            <input type="text" placeholder="DD" id="date" class="input_field date" data-bind="value : day"/>
+                                            <input type="text" placeholder="MM" class="input_field date" data-bind="value : month"/>
+                                            <input type="text" placeholder="YYYY" class="input_field date_year"data-bind="value : year"/>
+                                            <span data-bind="visible : dateInvalid" class="validationMessage validdata" >Enter correct data format.</span>
+                                        </div>
+
+                                        <div class="clear"></div>
+
+                                        <div class="inputs">
+                                            <label for="address" class="name_field_input">Address</label>
+                                            <input id="address" type="text" value="" class="input_field" data-bind="value : address"/>
+                                        </div>
+
+                                        <div class="inputs">
+                                            <label for="telephoneNumber" class="name_field_input">Tel. number</label>
+                                            <input id="telephoneNumber" type="text" value="" class="input_field" data-bind="value : telephoneNumber"/>
+                                        </div>
+
+                                        <div class="inputs">
+                                            <label for="pcode" class="name_field_input">Postcode</label>
+                                            <input id="pcode" data-bind="value:postcode" type="text" value="" class="input_field first"/>
+
+                                        </div>
+                                        <div class="inputs">
+                                            <label for="email" class="name_field_input">Email</label>
+                                            <input id="email" type="text" value="" class="input_field" data-bind="value:email"/>
+                                        </div>
+                                        <div class="inputs">
+                                            <label for="occup" class="name_field_input">Occupation</label>
+                                            <input id="occup" type="text" value="" class="input_field" data-bind="value : occupation"/>
+                                        </div>
+                                    </div>
+                                    <div class="right_form">
+                                        <div class="inputs">
+                                            <label for="username" class="name_field_input">Username</label>
+                                            <input id="username" type="text" value="" class="input_field" placeholder="desired username" data-bind="value : username, validationElement : username"/>
+                                        </div>
+                                        <div class="inputs">
+                                            <label for="pass" class="name_field_input">Password</label>
+                                            <input id="pass" type="password" value="" class="input_field" placeholder="desired password"data-bind="value : password"/>
+                                        </div>
+
+
+
+                                        <div class="inputs agreament" data-bind="validationOptions: { insertMessages: false }">
+                                            <label style="width: 100%;">
+                                            <input type="checkbox" data-bind="checked: agree" id="agree" name="agree" class="styled" />
+                                            <span class="terms_conditions" for="agree">I agree to the Yormoney terms and conditions.</span>
+                                            </label>
+                                            <p data-bind="validationMessage: agree" class="validationMessage" style="text-align: left"></p>
+                                        </div>
+                                        <div class="inputs button">
+                                            <input data-bind="click : showTerms" type="button" class="button_inp_terms" value="Read our terms & conditions" />
+                                            <input type="button" data-bind="click:register" class="done_btn reg" value="Register"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="right_content_register">
+                            <div class="title_video_text_right_content">
+                                <span class="title_right_main">How to?</span>
+                                <div class="block_title_text_right">
+                                    <span class="title_block">How to fill in this form...</span>
+                                    <span class="text_block">Input all your details in the fields opposite. Please note: username, password, email are mandatary.</span>
+                                </div>
+                                <div class="block_title_text_right">
+                                    <span class="title_block">How to activate...</span>
+                                    <span class="text_block">Check your email and click on activation link. Then enter yor username and password.</span>
+                                </div>
+                                <div class="block_title_text_right">
+                                    <span class="title_block">How to purchase an activation code...</span>
+                                    <span class="text_block">Simply click the 'Purchase an activation code' button and our system will take you through to  a secure payment page.</span>
+                                </div>
+                                <div class="video_youtube">
+                                    <span class="title_right_main">Help Video</span>
+                                   <!--  <iframe class="banner" width="225" height="155"
+                                            src="http://www.youtube.com/embed/XGSy3_Czz8k">
+                                    </iframe> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div id="footer">
+			</div>
+		</div>

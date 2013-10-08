@@ -1,0 +1,133 @@
+
+
+<div class="bckg_page">
+    <div id="header">
+        <div id="logo"><a href="#"></a></div>
+        <div id="exit"><a class="sub exit_btn" href="#" data-bind="click : exit">EXIT</a></div>
+    </div>
+    <div id="content" class="start_up">
+        <div class="title_form"><span class="title">Y&ouml;r - Personal Information</span></div>
+        <div class="results_cont cont_reg2">
+            <div class="reg_all">
+                <div id="left_content_register">
+                    <div class="title_left_content">
+                        <span class="image"></span>
+                        <div class="title_left_main start_title_main">Start Up Wizard</div>
+                        <div class="title_left_bottom">Personal Information</div>
+                    </div>
+                    <div id="form_registration">
+                        <form action="" method="" id="reg_form" class="overflo reg_form">
+                            <div class="left_form">
+                                <p class="details_text"><strong>Enter the details for All members of your immediate family.</strong></p>
+
+                                <!-- ko with : form -->
+                                <div class="personal_info">
+                                    <div class="inputs">
+                                        <label for="fname" class="">First name</label>
+                                        <input id="fname" type="text" value="" class="input_field" data-bind="value : firstName"/>
+                                    </div>
+                                    <div class="inputs">
+                                        <label for="lname" class="">Last name</label>
+                                        <input id="lname" type="text" value="" class="input_field" data-bind="value : lastName"/>
+                                    </div>
+                                    <div class="inputs clear">
+                                        <label for="date" class="">Date of birth</label>
+                                        <input data-bind="value : day" type="text" placeholder="DD" id="date" class="input_norm date">
+                                        <input data-bind="value : month" type="text" placeholder="MM" class="input_norm date">
+                                        <input data-bind="value : year" type="text" placeholder="YYYY" class="input_norm date_year">
+                                        <span data-bind="visible : dateInvalid" class="validationMessage validdata" >Enter correct data format.</span>
+                                    </div>
+                                    <div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="inputs">
+                                        <label for="telephone" class="">Telephone number</label>
+                                        <input id="telephone" type="text" value="" class="input_field" data-bind="value: phoneNumber" />
+                                    </div>
+                                    <div class="inputs clear">
+                                        <label for="email" class="">Email</label>
+                                        <input id="email" type="text" value="" class="input_field" data-bind="value : email"/>
+                                    </div>
+                                    <div class="inputs">
+                                        <label for="occup" class="">Occupation</label>
+                                        <input id="occup" type="text" value="" class="input_field" data-bind="value : occupation"/>
+                                    </div>
+                                </div>
+                                <div class="inputs info">
+                                    <a href="#" data-bind="click : $parent.helpClick"><img src="/img/info.png"/></a>
+                                    <label style="width : 120px">
+                                        <input data-bind="checked : accountHolder" type="checkbox">
+                                        <span>Account holder</span>
+                                    </label>
+                                </div>
+                                <div class="inputs width215">
+                                    <label class="">Relationship</label>
+                                    <select data-bind="options : $parent.relationshipList, optionsCaption : 'Please select...', value : relationship" class="selects" >
+                                    </select>
+                                </div>
+                                <!-- /ko -->
+
+                                <div class="inputs">
+                                    <input type="button" value="Click to add another member" class="butt_add butt_green" data-bind="click : saveClick"/>
+                                </div>
+                            </div>
+                            <div class="right_form">
+                                <p class="details_text"><strong>Only when all members have been added, click 'I'm done! on the right'</strong></p>
+                                <div class="textarea" data-bind="foreach : members">
+                                    <div class="members">
+                                        <p><span class="left_names">Name</span><span data-bind="text : name"></span></p>
+                                        <p><span class="left_names">Date of Birth</span><span data-bind="text : dateOfBirth"></span></p>
+                                        <p><span class="left_names">Relationship</span><span data-bind="text : relationship"></span></p>
+                                        <p><span class="left_names">Acoount holder</span><span data-bind="text : accountHolderText"></span></p>
+                                        <div class="editdel">
+                                            <input type="button" value="Edit" class="butt edit" data-bind="click : $parent.editMember">
+                                            <input type="button" value="Delete" class="butt delete" data-bind="click : $parent.deleteMember">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inputs center">
+                                    <input type="button" value="I'm done!" class="butt_done butt_green" data-bind="click : done"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="right_content_register">
+                    <div class="">
+                        <div class="title_video_text_right_content">
+                            <div class="title_right_main start_wiz">
+                                <p>Registered</p>
+                                <p>Account</p>
+                                <p>Holder</p>
+                            </div>
+                            <div class="block_title_text_right">
+                                <span class="title_block per_inf_t">Name</span>
+                                <span class="text_block per_inf_txt" data-bind="text : name"></span>
+                            </div>
+                            <div class="block_title_text_right">
+                                <span class="title_block per_inf_t">Address</span>
+                                <span class="text_block per_inf_txt" data-bind="text : address"></span>
+                            </div>
+                            <div class="block_title_text_right">
+                                <span class="title_block per_inf_t">Tel.number</span>
+                                <span class="text_block per_inf_txt" data-bind="text: telephoneNumber"></span>
+                            </div>
+                            <div class="block_title_text_right">
+                                <span class="title_block per_inf_t">Email</span>
+                                <span class="text_block per_inf_txt" data-bind="text : email"></span>
+                            </div>
+                            <div class="video_youtube">
+                                <p class="title_right_main">Help Video</p>
+                                <!-- <iframe class="banner" width="225" height="155"
+                                        src="http://www.youtube.com/embed/XGSy3_Czz8k">
+                                </iframe> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<script type="text/template" id="view-folder">
+<li data-bind="css : { selectedFolder :  $parent.selectedFolderId() == id()}">
+    <a  data-bind="click : $parent.selectFolder, clickBubble : false, attr : { title : name }" href="#">
+        <img src="/pages/img/folder.png">
+    </a>
+    <a data-bind="click : $parent.selectFolder, clickBubble : false, attr : { title : name }" href="#">
+         <p class='folder-lable' data-bind="text : name"></p> 
+    </a>
+</li>
+</script>
+
+<script type="text/template" id="view-edit">
+<li data-bind="css : { selectedFolder :  $parent.selectedFolderId() == id()}">
+    <a  data-bind="click : $parent.selectFolder, clickBubble : false" href="#">
+        <img src="/pages/img/folder.png">
+    </a>
+    <a data-bind="click : $parent.selectFolder, clickBubble : false" href="#">
+        <input class="folder-name" style="width : 100px" data-bind="value : name, event : { change : $parent.changeFolder}"></input>
+    </a>
+</li>
+</script>
+
+
+<div class="tab-pane active" id="documents">
+    <div class="overlay_provide" style="height:362px">
+        <div id="folder-container" style="overflow:hidden; height : 90px; position: relative">
+
+        <ul id="folder-inner" style="position : absolute; height : 100%;" class="folders overflo" 
+        data-bind="click : unselect, template : { name : displayMode, foreach : folders }">
+            
+        </ul>
+
+        </div>
+        <div class="clear"></div>
+        <div id="red"></div>
+        <ul  style="min-height: 58px;" class="docs overflo" data-bind=" foreach : files">
+            <li data-bind="css : { selectedFolder :  $parent.selectedFileId() == id}">
+                <a data-bind="attr : { href : path }, click : $parent.selectFile, event : { dblclick: $parent.downloadFile }"  ><img data-bind="attr : { src : $parent.calculateSrc(type) }" ></a>
+                <a  data-bind="attr : { href : path }, click : $parent.selectFile, event : { dblclick: $parent.downloadFile }" ><p class="file-ldable" data-bind="text : name"></p></a>
+            </li>
+        </ul>
+        <div id="photo-upload"></div>
+    <!-- ko with : notes -->
+    <!-- ko template : { html : template } -->
+    <!-- /ko -->
+    <!-- /ko -->
+    </div>
+    
+</div>

@@ -1,0 +1,725 @@
+<!--<html>-->
+<!--<head>-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>Y&ouml;r  - Home</title>-->
+    <!--<link rel="stylesheet" type="text/css" href="../css/main.css">-->
+<!--</head>-->
+<!--<body>-->
+<style type="text/css">
+    .invalid{
+        background-color:red
+    }
+</style>
+<div class="results bckg_page" id="content">
+<div class="content" >
+<div class="title_form"><span class="logo_sm"></span><span class="tittle title">Y&ouml;r - Home</span></div>
+<div class="results_cont income_pages">
+<div class="result_left">
+    <div class="radius_l left_inc">
+
+        <img class="diagramm" src="img/diagramm.png" alt="diagramm"/>
+        <div class="overflo inc_btns_blck income_scroll" data-bind="foreach:categories">
+            <div class="clear"><input type="button" class="sub fleft" value="" data-bind="css:{'active_btn':$data.name == $parent.selectedCategory(),'done_btn':$data.isCompleted()==true},value:$data.name, click:$parent.selectCategoryClick"><div class="fright inc_check"><img data-bind="attr:{src:$data.imagePath}" src="img/checkb.png"></div></div>
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Food & Drink"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Family Entertainment"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Pets"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Other Home Costs"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Upkeep"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Education"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Activities"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+
+        <!--<div><img class="diagramm" src="img/diagramm.png" alt="diagramm"/></div>-->
+        <!--<div class="overflo inc_btns_blck income_scroll">-->
+            <!--<div class="clear"><input type="button" class="active_btn sub fleft" value="Utility Bills"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Food & Drink"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Family Entertainment"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Pets"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Other Home Costs"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Upkeep"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Education"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+            <!--<div class="clear"><input type="button" class="sub fleft" value="Children Activities"><div class="fright inc_check"><img src="img/checkb.png"></div></div>-->
+
+        </div>
+        <iframe class="banner" width="225" height="155"
+                src="http://www.youtube.com/embed/XGSy3_Czz8k">
+        </iframe>
+    </div>
+</div>
+<div class="result_right inc_right">
+<table class="inc_table ">
+    <tbody>
+    <tr class="inc_menu">
+        <td><a href="#">Income</a></td>
+        <td><a href="#">Home</a></td>
+        <td><a href="#">Transport</a></td>
+        <td><a href="#">Finances</a></td>
+        <td><a href="#">Personal</a></td>
+        <td><a href="#">Annual</a></td>
+        <td><a href="#">One-offs</a></td>
+    </tr>
+    <tr class="greens">
+        <td class="green_line bordered_skot_left"></td>
+        <td class="green50_line bordered_skot"></td>
+        <td class="bordered_skot"></td>
+        <td class="bordered_skot"></td>
+        <td class="bordered_skot"></td>
+        <td class="bordered_skot"></td>
+        <td class="bordered_black_right"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="inc_top">
+    <img class="middle inc_head" src="img/inc_head.png"> <h1 class="inline">Home - <span data-bind="text:selectedCategory"></span> </h1>
+    <span data-bind="text:total"></span>
+</div>
+
+<div class="tabbable tabs-left benefit_table">
+<ul class="nav nav-tabs bold_names"data-bind="foreach:members">
+    <li data-bind="css:{'active':$data==$parent.selectedMember()}"><a href="#home" data-toggle="tab" data-bind="text:$data"></a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active scroll_table" id="home">
+    <table cellpadding="0" cellspacing="0" border="0" class="display event inc_datat" width="100%">
+        <thead>
+        <tr class="tr_head">
+            <td></td>
+            <td class="text-left">Yor Utilities</td>
+            <td>£</td>
+            <td>Frequency</td>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach:visibleIncome">
+        <tr class="gradeC"data-bind="css:{'invalid':$data.isValid()== false}">
+            <td class="center"><a href="#" data-bind="click: $parent.addCopy"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome" data-bind="text:name">Council Tax</td>
+            <td class="center"><input type="text" data-bind="value:value" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select data-bind="options:$parent.frequencyList,value:$data.frequency,optionsCaption:'Frequency' "></select>
+            </td>
+            <td class="center" data-bind="text:inMonth"></td>
+            <td class="center" data-bind="if:canDelete">
+
+                <a href="#" data-bind="click: $parent.deleteIncome"><img class="middle blue_plus" src="img/delete.svg"></a>
+
+            </td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+<div class="tab-pane scroll_table" id="payhistory">
+    <table cellpadding="0" cellspacing="0" border="0" class="display event inc_datat" width="100%">
+        <thead>
+        <tr class="tr_head">
+            <td></td>
+            <td class="text-left">Yor Utilities</td>
+            <td>?</td>
+            <td>Frequency</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Council Tax</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Water</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Gas</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Electric</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Oil</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Home Phone</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Internet</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Sky / Cable</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">TV License</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Direct Debit Contingency</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+<div class="tab-pane scroll_table" id="contacts">
+    <table cellpadding="0" cellspacing="0" border="0" class="display event inc_datat" width="100%">
+        <thead>
+        <tr class="tr_head">
+            <td></td>
+            <td class="text-left">Yor Utilities</td>
+            <td>?</td>
+            <td>Frequency</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Council Tax</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Water</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Gas</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Electric</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Oil</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Home Phone</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Internet</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Sky / Cable</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">TV License</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Direct Debit Contingency</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+<div class="tab-pane scroll_table" id="documents">
+    <table cellpadding="0" cellspacing="0" border="0" class="display event inc_datat" width="100%">
+        <thead>
+        <tr class="tr_head">
+            <td></td>
+            <td class="text-left">Yor Utilities</td>
+            <td>?</td>
+            <td>Frequency</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Council Tax</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Water</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Gas</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Electric</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Oil</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Home Phone</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Internet</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Sky / Cable</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">TV License</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="gradeC">
+            <td class="center"><a href="#"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+            <td class="left takehome">Direct Debit Contingency</td>
+            <td class="center"><input type="text" class="input_table_sum" placeholder=""></td>
+
+            <td class="center">
+                <select >
+                    <option>Frequency</option>
+                    <option>Every day</option>
+                    <option>Every week</option>
+                    <option>Every month</option>
+                    <option>Every year</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+</div>
+</div>
+
+<div class="clear bott_butts">
+    <div class="red_complete">
+        <p class="red_alert">*You need to Fill/delete partially complete fields</p>
+    </div>
+    <div class="add_sport">
+        <div class="fleft">
+            <a href="#" class="add_another"><img class="middle green_plus" src="img/green_plus.svg"> Add another Benefit Income type</a>
+        </div>
+        <div class="inline fright">
+            <input type="button" data-bind="click:nextClick" class="btn_action button_next inline" value="FINISHED-NEXT">
+            <input type="button" data-bind="click:skipClick" class="btn_action button_next inline" value="SKIP">
+        </div>
+    </div>
+</div>
+</div>
+<div class="fright"><input type="button" class="button_save button_next" value="SAVE & EXIT"></div>
+</div>
+</div>
+</div>
+<!--<script src="app/lib/jquery.js"></script>-->
+<!--<script src="app/lib/bootstrap/js/bootstrap.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<script type="text/template" id="income-row">-->
+        <!--<td class="center"><input data-bind="checked : active" type="checkbox" class="styled"></td>-->
+        <!--<td class="selectRigth">-->
+            <!--<select data-bind="optionsCaption: 'Choose...', options:$parent.allExpenditureTypes, optionsText : 'name', optionsValue: 'id', value : expenditureType.id, value : expenditureType.id  "></select>-->
+        <!--</td>-->
+        <!--<td class="center" >-->
+            <!--<input data-bind="value : companyName" type="text" class="input_table" placeholder="Type here...">-->
+        <!--</td>-->
+        <!--<td class="selectRigth">-->
+              <!--<select data-bind="optionsCaption: 'Choose...',  options:$parent.members, optionsText : 'firstName', optionsValue: 'id', value : member ? member.id : ''"></select>-->
+        <!--</td>-->
+        <!--<td class="selectRigth" >-->
+            <!--<select data-bind="optionsCaption: 'Choose...',  options:$parent.frequencyList, value : frequency"></select>-->
+        <!--</td>-->
+
+        <!--<td class="center " >-->
+            <!--<input data-bind="value : cost"  size="9" maxlength="9" type="text" class="input_table" placeholder="Type here...">-->
+        <!--</td>-->
+        <!--<td class="selectRigth width100p">-->
+                <!--<select data-bind="optionsCaption: 'Choose...',  options:$parent.bankAccounts, optionsText : 'name', optionsValue: 'id', value : bankAccount ? bankAccount.id : ''"></select>-->
+        <!--</td>-->
+      <!--<td class="center" >-->
+            <!--question-->
+        <!--</td>-->
+        <!--<td class="center" >-->
+            <!--<a href='#' data-bind="click : $parent.delete">delete</a>-->
+        <!--</td>-->
+<!--</script>-->
+
+<!--<div class="income_bckgr">-->
+    <!--<div class="income_top">-->
+        <!--<span class="image"></span>-->
+        <!--<div class="inline title_text">-->
+            <!--<p class="title">Start Up Wizard</p>-->
+            <!--<p class="under_title">Regular Expenditure</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="inputs button fright" id="expenditue_top_form">-->
+        <!--<p>-->
+
+            <!--<select style="width: 150px" id="test"  data-bind="options : categories, value : selectedCategory, optionsText : 'name'">-->
+            <!--</select>-->
+            <!--<span class="selectLable">Category<span>-->
+          <!---->
+        <!--</p>-->
+        <!--<p>-->
+          <!--<select style="width: 200px"  data-bind="optionsCaption: 'Choose...', options : expenditureTypes, optionsValue : 'id', value : expenditureTypeId, optionsText : 'name'">-->
+            <!--</select>-->
+          <!--<span class="selectLable">Expenditure Type</span>         -->
+        <!--</p>-->
+        <!--<div class="clear"></div>-->
+        <!--<div class="editdel">-->
+            <!--<a data-bind="click : showCategories" class="butt edit show_lists" data-toggle="modal"  >Categories</a>-->
+            <!--<a href="#" class="butt expenditure" data-bind="click : add">Add to expenditure list</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div style="width: 900px" class="fixHeight">-->
+    <!--<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%"-->
+    <!--data-bind="dataTable: { -->
+      <!--instance :  oTable,-->
+      <!--options : {-->
+         <!--sScrollY: '271px',-->
+         <!--bPaginate: true,-->
+         <!--bProcessing: true,-->
+         <!--bInfo : false,-->
+         <!--bServerSide: true,-->
+         <!--bLengthChange  : false,-->
+         <!--bScrollCollapse: false,-->
+         <!--sAjaxSource : '/expenditure/list' ,-->
+         <!--aoColumns : columns,-->
+         <!--buildRow : buildRow,-->
+         <!--rowTemplate : 'income-row'-->
+        <!--}-->
+    <!--}"></table>-->
+<!--</div>-->

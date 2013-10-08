@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="10"
+   height="10"
+   id="svg5591"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="next.svg">
+  <defs
+     id="defs5593" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="31.678384"
+     inkscape:cx="0.010298536"
+     inkscape:cy="5.4885953"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1024"
+     inkscape:window-height="576"
+     inkscape:window-x="235"
+     inkscape:window-y="792"
+     inkscape:window-maximized="1"
+     showborder="false"
+     inkscape:showpageshadow="false" />
+  <metadata
+     id="metadata5596">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1042.3622)">
+    <g
+       transform="matrix(0.59554439,0,0,0.59554439,-57.429891,785.25612)"
+       id="g5479"
+       style="fill:#ffffff">
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 104.834,433 c 3.859,0 7,3.141 7,7 0,3.859 -3.141,7 -7,7 -3.859,0 -7,-3.141 -7,-7 0,-3.859 3.141,-7 7,-7 m 0,-1 c -4.418,0 -8,3.582 -8,8 0,4.418 3.582,8 8,8 4.418,0 8,-3.582 8,-8 0,-4.418 -3.582,-8 -8,-8 l 0,0 z"
+         id="path5481" />
+      <polygon
+         style="fill:#ffffff"
+         points="102.834,442.366 105.762,439.857 102.834,437.349 102.834,434.715 108.834,439.857 102.834,445 "
+         id="polygon5483" />
+    </g>
+  </g>
+</svg>

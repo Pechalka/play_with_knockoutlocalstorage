@@ -1,0 +1,133 @@
+#calendar{
+	overflow: hidden;
+}
+
+  .fc-day {
+      width: 90px;
+      height: 93px;
+      /*float: left;*/
+      background: #fafafa;
+      border: 1px solid #d8d8d6;
+
+    
+
+  }
+.fc-day-number {
+    background-image: linear-gradient(bottom, rgb(2,107,159) 26%, rgb(0,128,178) 45%, rgb(0,150,200) 88%);
+    background-image: -o-linear-gradient(bottom, rgb(2,107,159) 26%, rgb(0,128,178) 45%, rgb(0,150,200) 88%);
+    background-image: -moz-linear-gradient(bottom, rgb(2,107,159) 26%, rgb(0,128,178) 45%, rgb(0,150,200) 88%);
+    background-image: -webkit-linear-gradient(bottom, rgb(2,107,159) 26%, rgb(0,128,178) 45%, rgb(0,150,200) 88%);
+    background-image: -ms-linear-gradient(bottom, rgb(2,107,159) 26%, rgb(0,128,178) 45%, rgb(0,150,200) 88%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.26, rgb(2,107,159)),
+        color-stop(0.45, rgb(0,128,178)),
+        color-stop(0.88, rgb(0,150,200))
+    );
+    border: 1px solid #006b9f;
+
+    color: #ffffff;
+	padding-left: 4px;
+    font-size: 10px;
+}
+.fc-other-month .fc-day-number {
+    background-image: linear-gradient(bottom, rgb(88, 97, 102) 26%, rgb(143, 153, 154) 45%, rgb(197, 197, 197) 88%);
+    background-image: -o-linear-gradient(bottom, rgb(88, 97, 102) 26%, rgb(143, 153, 154) 45%, rgb(197, 197, 197) 88%);
+    background-image: -moz-linear-gradient(bottom, rgb(88, 97, 102) 26%, rgb(143, 153, 154) 45%, rgb(197, 197, 197) 88%);
+    background-image: -webkit-linear-gradient(bottom, rgb(88, 97, 102) 26%, rgb(143, 153, 154) 45%, rgb(197, 197, 197) 88%);
+    background-image: -ms-linear-gradient(bottom, rgb(88, 97, 102) 26%, rgb(143, 153, 154) 45%, rgb(197, 197, 197) 88%);
+
+    /*background-image: -webkit-gradient(*/
+        /*linear,*/
+        /*left bottom,*/
+        /*left top,*/
+        /*color-stop(0.26, rgb(229, 229, 229) ),*/
+        /*color-stop(0.45, rgb(229, 229, 229) ),*/
+        /*color-stop(0.88, rgb(229, 229, 229) )*/
+    /*);*/
+    border: 1px solid #006b9f;
+    font-size: 10px;
+}
+
+.fc-button-month, .fc-button-agendaWeek, .fc-button-agendaDay {
+	    color: #fff;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 5px 9px 5px 9px;
+    text-decoration: none;
+    /*height: 26px;*/
+    border: 1px solid #727272;
+    background: url("../img/edit.png") repeat-x;
+}
+
+a.fc-event img {
+    margin-right: 5px;
+}
+
+.fc-content a {
+    text-decoration: none;
+    color: #000000;
+}
+
+
+.fc-state-active {
+    background: url("../img/green_sm.png") repeat-x;
+}
+
+.fc-text-arrow {
+    display: none;
+}
+
+.fc-button.fc-button-prev {
+    display: block;
+    width: 10px;
+    cursor: pointer;
+    height: 29px;    
+    background: url("../img/arr_left.png") repeat-x;    
+    vertical-align: middle;
+    float: left;
+}
+
+.fc-button-next {
+   display: block;
+    width: 10px;
+    height: 29px;    
+    background: url("../img/arr_right.png") repeat-x;    
+    vertical-align: middle;
+    float: left;
+    cursor: pointer;
+}
+
+.fc-header-title {
+    float: left;
+    margin: 8px 5px 0 5px;
+    overflow: hidden;
+    width: 80px;
+    height: 25px;
+}
+
+.fc-header-title h2 {
+    font-size: 10px;
+    text-align: center;
+    font-weight : normal;
+}
+
+.fc-header-left {
+    /*width: 150px;*/
+}
+
+
+
+.fc-button {
+    margin-right: 3px;
+}
+
+.fc-header-center {
+    vertical-align: middle;
+}

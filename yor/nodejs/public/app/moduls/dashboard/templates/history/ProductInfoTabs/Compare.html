@@ -1,0 +1,50 @@
+    <div class="compare_pay">
+         <div class="compare_content">
+              <h2 class="red">Joe, we've found 14 polcies from £10.90 per month</h2>
+             <p><small>You have searched for: <strong>Single, Life Insurance with Critical Illness </strong>cover for <strong>£100,000.00</strong>, over <strong>15 years.</strong></small></p>
+             <table class="compare_table">
+                  <thead>
+                  <tr>
+                      <td><p>Insurance</p><p>Company</p></td>
+                      <td><p>Monthly</p><p>Payment</p></td>
+                      <td><p>Could my</p><p>payment</p><p>changes?</p></td>
+                      <td style="width: 200px"><p>Policy Features</p><p class="nobold">(see policy documents for full details)<a href="#"><img src="/pages/img/question.png"></a></p></td>
+                      <td><p>Make Y&ouml;r</p><p>Choise</p></td>
+                  </tr>
+                  </thead>
+                 <tbody data-bind="foreach : compareSave">
+                    <tr>
+                        <td class="insur_logo"><img data-bind="attr : { src : path_imageBrend }"></td>
+                        <td class="blue_color"><h1><strong data-bind=" text : '£' + payment_monthly"></strong></h1></td>
+                        <td><strong><p data-bind="text : paymentChanges ? 'No' : 'Yes'">No</p></strong><p>(guaranteed)</p></td>
+                        <td class="text-left" data-bind="html : policyFeatures"></td>
+                         <td class="check">
+                          <input  data-bind="attr : { id : 'ch' + $index() }" class="css-checkbox" type="checkbox" />
+                          <label  data-bind="attr : { for : 'ch' + $index() }" name="demo_lbl_1" class="css-label"></label>
+                          <!-- Checkbox powered by CssCheckbox.com -->
+                          <p><a href="#">Read policy</a></p>
+                          <p><a href="#">Documents</a></p>
+                      </td>
+                    </tr>   
+                 </tbody>
+             </table>
+         </div>
+    </div>
+    <div class="textarea_compare">
+         <div class="fleft premium">
+             <p>Y&ouml;r Current Premium = £23.98</p>
+             <p>Y&ouml;r Proposed Premium = £11.55</p>
+         </div>
+         <div class="fleft green center">
+             <h2>Y&ouml;r Saving</h2>
+             <p><strong>£12.98 p.c.m.</strong></p>
+             <p><strong>£141.55 p.a.</strong></p>
+         </div>
+         <div class="fright">
+             <div href="#" class="butt_big green_btn_big">
+                 <p>Buy Y&ouml;r</p>
+                 <p>Policy</p>
+             </div>
+         </div>
+
+    </div>

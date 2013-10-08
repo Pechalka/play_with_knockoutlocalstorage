@@ -1,0 +1,91 @@
+
+                  <div class="left_butts">
+                      <ul data-bind="foreach : abc">
+                          <li data-bind="css : { active : $data == $parent.letter() }">
+                            <a data-bind="click : $parent.select, text : $data" href="#" ></a>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="address_cont fright">
+                      <div class="fright">
+                          <ul class="menu_supplier">
+                              <li><a title='add new address' data-bind="click : add" href="#"><img src="/pages/img/suppl_message.png"></a></li>
+                              <li><a title='show video tutorial' data-bind="click : helpVideo" href="#"><img src="/pages/img/suppl_kino.png"></a></li>
+                          </ul>
+                      </div>
+                      <div class="clear"></div>
+
+                <div data-bind="foreach : items"  style="height: 500px; width: 610px; overflow: auto;">
+                      <div data-bind="validationOptions: { insertMessages: false }" class="contacts_item adrress_width">
+                          <div class="left_right adress_page">
+                              <div class="fleft">
+                                <div>
+                                        <p data-bind="validationMessage: name" class="validationMessage" style="float:left">Please enter a valid date</p>
+                                        <div class="clear"></div>
+                                    </div>
+                                  <div class="edit_info">
+                                      <span class="names_edit">Company/Name:</span>
+                                      <input size="30" maxlength="30" data-bind="value : name" type="text" value="Wayne Hodkinson">
+                                  </div>
+                                  <div style="overflow: hidden">
+                                        <p data-bind="validationMessage: phone" class="validationMessage" style="float:left">*</p>
+                                  </div>
+                                  <div class="edit_info">
+                                      <span class="names_edit">Tel:</span>
+                                      <input size="9" maxlength="9"  data-bind="value : phone"  type="text" value="01234 567890">
+                                  </div>
+                                  <div class="edit_info">
+                                      <span class="fleft names_edit">Address:</span>
+                                      <textarea size="80" maxlength="80" data-bind="value : address" cols="23" rows="4">123 Any Road, Randomsvile, Yourshire, AB1 2DC</textarea>
+                                  </div>
+                                  
+                                  
+                                  <div>
+                                        <p data-bind="validationMessage: email" class="validationMessage" style="float:left">Please enter a valid date</p>
+                                        <div class="clear"></div>
+                                    </div>
+                                  <div class="edit_info">
+                                      <span class="names_edit">Email:</span>
+                                      <input size="50" maxlength="50"  data-bind="value : email" type="text" value="wayne@yor.co.uk">
+                                  </div>
+                                  <div>
+                                        <p data-bind="validationMessage: webaddress" class="validationMessage" style="float:left">Please enter a valid date</p>
+                                        <div class="clear"></div>
+                                    </div>
+                                  <div class="edit_info">
+                                      <span class="names_edit">Web Address:</span>
+                                      <input size="80" maxlength="80"  data-bind="value : webaddress" type="text" value="http://www.yor.co.uk">
+                                  </div>
+                                  <div class="edit_info">
+                                      <span class="names_edit">Social Media:</span>
+                              <span>
+                                  <a href="#"><img src="/pages/img/facebook.png"></a>
+                                  <a href="#"><img src="/pages/img/tweetr.png"></a>
+                              </span>
+                                  </div>
+                              </div>
+                              <a title="remove address" data-bind="click : $parent.delete" href="#"><img src="/pages/img/suppl_cancel.png"></a>
+                              <div class="fright ivan_portrait">
+
+                                  <img src="/pages/img/ivan.png">
+                                  <p><strong>Birthday</strong></p>
+                                  <p>09/10/1978</p>
+
+                              </div>
+<div class="inputs">
+                                        <input style="width: 111px; margin: 0 0 0 40px;" data-bind="click : $parent.save" type="button" value="Save" class="butt_add">
+                                    </div>
+
+                          </div>
+ <!-- ko with : notes -->
+                                <!-- ko template : { html : template } -->
+                                <!-- /ko -->
+                                <!-- /ko -->
+
+                  </div>
+                </div>
+                <!-- <div class="budget">
+                    <div class="fleft white">BUDGET £ 1,000.00</div>
+                    <div class="fright green">ACTUAL £500.00</div>
+                </div> -->
+            </div>

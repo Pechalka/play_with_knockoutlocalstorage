@@ -1,0 +1,68 @@
+ <div class="tab-pane" id="contacts">
+    <div class="overlay_provide" style="height:362px">
+        <div class="providers_fisrt">
+            <p>
+                <span class="label_product"><strong>Provider</strong></span>
+                <span>Pru Protetc</span>
+            </p>
+            <div class="overflo">
+                <span class="label_product fleft"><strong>Address</strong></span>
+                <div class="fleft">
+                    <p>Address Line 1</p>
+                    <p>Address Line 2</p>
+                    <p>Address Line 3</p>
+                </div>
+            </div>
+               <div class="add_buttns">
+                   <p class="task"><strong><a href="#"><img class="vertical" src="/pages/img/plus.png">Telephone Number</a></strong></p>
+                   <p class="task"><strong><a data-bind="click : addAddress" href="#"><img class="vertical" src="/pages/img/plus.png">Email Address</a></strong></p>
+               </div>
+        </div>
+
+        <div class="providers_second">
+            <div>
+                <p><strong>Telephone numbers</strong></p>
+                <table class="table product-contact" id="edit">
+                    <tbody>
+                    <!-- ko foreach : phones -->
+                    <tr>
+                        <td data-bind="text : name"></td>
+                        <td data-bind="text : description"></td>
+                        <td><a data-bind="click : $parent.removePhone" href="#">delete</a></td>
+                    </tr>
+                    <!-- /ko -->
+                    <tr >
+                        <td><input size="80" maxlength="80" data-bind="value : phoneName" type="text" /></td>
+                        <td><input size="80" maxlength="80" data-bind="value : phoneDescription" type="text" /></td>
+                        <td><a data-bind="click : addPhone" href="#">add</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <p><strong>Email addresses</strong></p>
+                <table  class="table product-contact" id="editor">
+                    <tbody>
+                        <!-- ko foreach: address -->
+                    <tr>
+                        <td data-bind="text : name"></td>
+                        <td data-bind="text : description"></td>
+                        <td><a data-bind="click : $parent.removeAddress" href="#">delete</a></td>
+                    </tr>
+                    <!-- /ko -->
+                    <tr>
+                        <td><input size="80" maxlength="80" data-bind="value : addressName" type="text"/></td>
+                        <td><input size="80" maxlength="80" data-bind="value : addressDescription" type="text"/></td>
+                        <td><a data-bind="click : addAddress" href='#'>add</a></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clear"><br></div>
+        <!-- ko with : notes -->
+    <!-- ko template : { html : template } -->
+    <!-- /ko -->
+    <!-- /ko -->
+    </div>    
+</div>

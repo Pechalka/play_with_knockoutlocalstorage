@@ -1,0 +1,60 @@
+<div class="bckg_page">
+    <div id="header">
+        <div id="logo"><a href="#"></a></div>
+        <div id="exit"><a class="exit" href="#" data-bind="click : exit"></a></div>
+    </div>
+    <div id="content" class="registr_page">
+        <div class="title_form"><span class="title">Y&ouml;r - Summary</span></div>
+        <div class="bckgr_full">
+            <div class="income_page expend_page">
+                <div class="fleft summ_left">
+                    <div class="income_top_sum">
+                        <span class="image"></span>
+                        <div class="inline title_text">
+                            <p class="start">Start Up Wizard</p>
+                            <p class="under_title">Summary </p>
+                        </div>
+                    </div>
+                    <div class="textarea_summ">
+                        <!-- ko foreach : items -->
+                        <div class="members_sum " data-bind="css : { right : $index()%2 == 0 }">
+                            <p class="h3">
+                                <span class="value_sum" data-bind="text : name">House</span>
+                                <span class="green price_sum" data-bind="text : '$' + price"></span>
+                            </p>
+                            <!-- ko foreach : items -->
+                            <p class="italic">
+                                <span class="value_sum" data-bind="text : name"></span>
+                                <span class="price_sum" data-bind="text : '$' + price"></span>
+                            </p>
+                            <!-- /ko -->
+                        </div>                        
+                            <!-- ko if : $index()%2 -->
+                                <div class="clear"></div>
+                            <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+
+                <div class="fright summ_right">
+                    <div class="inputs button fright">
+                        <p> In <input type="button" class="butt_big brown" data-bind="value : In" ></p>
+                        <p> Out <input type="button" class="butt_big brown" data-bind="value : Out"></p>
+                        <p> Result <input type="button" class="butt_big red_butt" data-bind="value : Result"></p>
+                        <p><input data-bind="click : demo" type="button" class="butt_big blue_btn" value="Add, Edit, Delete"></p>
+                        <p><input data-bind="click : demo" type="button" class="butt_big blue_btn" value="Graphs"></p>
+                        <p><input data-bind="click : demo" type="button" class="butt_big blue_btn" value="Cost Cut - Ideas"></p>
+                        <p><input type="button" class="butt_big green_btn" data-bind="click : next" value="Save... Yor done!"></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+</div>
+
+
+

@@ -1,0 +1,167 @@
+<div class="bckg_page">
+<div id="header">
+    <div id="logo"><a href="#"></a></div>
+    <div id="exit"><a class="sub exit_btn" href="#">EXIT</a></div>
+</div>
+<div id="content" class="dashb ">
+<div class="left_video">
+    <img src="img/diagramm.png" alt="diagramm" class="diagr_video">
+    <div>
+        <a href="#"><img src="img/apps.png" alt="apps" class="app"></a>
+        <a href="#"><img src="img/yoshop.png" class="fright" class="fright" alt="yor shop"></a>
+    </div>
+    <a href="#"><img src="img/tescobl.png" alt="tesco" class="tesco"></a>
+
+</div>
+<div class="content video_page">
+<div class="title_form">
+    <span class="back"><a href="#"><img src="img/back.png" alt="back"></a></span>
+    <span class="video_lib">Y&ouml;r - Home</span>
+    <span class="dash"><a href="#"><img src="img/dash.png" alt="back"></a></span>
+</div>
+<div class="bckgr">
+<div class="dash_content">
+<div class="menu center line">
+    <select>
+        <option>Viev</option>
+        <option>Viev</option>
+        <option>Viev</option>
+        <option>Viev</option>
+    </select>
+    <div class="inline dashboard">
+        <div class="icon add_exp">
+            <a href="#"><img src="img/btn_add.png"></a>
+            <div>
+                <a href="#"><div>Add Expenditure</div></a>
+            </div>
+        </div>
+        <div class="icon wh_mode">
+            <a href="#"><img src="img/btn_hat.png"></a>
+            <div>
+                <a href="#"><div>Whisper Mode</div></a>
+            </div>
+        </div>
+        <div class="icon upg_opt">
+            <a href="#"><img src="img/btn_upgr.png"></a>
+            <div>
+                <a href="#"><div>Upgrade Options</div></a>
+            </div>
+        </div>
+        <div class="icon vd_lib">
+            <a href="#"><img src="img/btn_video.png"></a>
+            <div>
+                <a href="#"><div>Video Library</div></a>
+            </div>
+        </div>
+        <div class="icon print">
+            <a href="#"><img src="img/btn_print.png"></a>
+            <div>
+                <a href="#"><div>Print</div></a>
+            </div>
+        </div>
+        <div class="icon hlp">
+            <a href="#"><img src="img/btn_help.png"></a>
+            <div>
+                <a href="#"><div>Help</div></a>
+            </div>
+        </div>
+    </div>
+    <input class="search fright" type="text" placeholder="Quick Search">
+    <a href="#/diagramm" >diagramma</a>
+</div>
+<div class="dash_limit">
+    <div class="dashb ">
+        <h3>Y&ouml;r Budget</h3>
+    </div>
+    <div class="info_table">
+        <div class="dash_left">
+            <table cellpadding="0" cellspacing="0" border="0" width="170px">
+                <tr>
+                    <td class="underline">Y&ouml;r Income</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="item_hover" data-bind="click : partClick.bind($data,{name:'Income'}), css : {item_hover_active : selectedPart() == 'Income' }">
+                    <td class="item_table"><a href="#">Income</a></td>
+                    <td class="item_price"><a href="#">£1700</a></td>
+                    <td class="nocolor"><a href="#"><img src="img/blue_plus.svg"></a></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" width="170px">
+                <tr>
+                    <td class="underline">Y&ouml;r Expenditure</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- ko foreach : parts  -->
+                <tr class="item_hover" data-bind="click : $parent.partClick, css : {item_hover_active : $parent.selectedPart() == name }">
+                    <td class="item_table"><a href="#" data-bind="text : name"></a></td>
+                    <td class="item_price"><a href="#" >£250</a></td>
+                    <td class="nocolor"><a href="#"  ><img src="img/blue_plus.svg"></a></td>
+                </tr>
+                <!-- /ko -->
+                <tr>
+                    <td class="" >Total</td>
+                    <td data-bind="text: selectedPart"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="item_table brdrd_btm">Expenditure</td>
+                    <td class="item_price brdrd_btm">£1150</td>
+                    <td class="brdrd_btm"></td>
+                </tr>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" width="170px">
+                <tr>
+                    <td class="item_table_exp">Y&ouml;r Surplus</td>
+                    <td class="">?1150</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="dash_left">
+
+            <table cellpadding="0" cellspacing="0" border="0" width="170px">
+
+               <tbody data-bind="foreach:categories">
+                <tr class="item_hover" data-bind="click : $parent.categoryClick, css : {item_hover_active : $parent.selectedCategory() == name }">
+                    <td class="item_table"><a href="#" data-bind="text:name">Utility Bills</a></td>
+                    <td class="item_price"><a href="#">1700</a></td>
+                    <td class="nocolor"><a href="#"><img src="img/blue_plus.svg"></a></td>
+                </tr>
+               </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="dash_left">
+
+            <table cellpadding="0" cellspacing="0" border="0" width="170px">
+
+                <tbody data-bind="foreach:incomes">
+                <tr class="item_hover" >
+                    <td class="item_table"><a href="#" data-bind="text : name"></a></td>
+                    <td class="item_price"><a href="#" data-bind="text:value" >£250</a></td>
+                    <td class="nocolor"><a href="#"  ><img src="img/blue_plus.svg"></a></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="banner_video">
+    <a href="#"><img src="img/banner_legal.png"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+</div>
+</div>

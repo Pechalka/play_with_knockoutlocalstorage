@@ -1,0 +1,25 @@
+<div class="tab-pane" id="payhistory">
+    <div class="">
+        <div class="textarea_suppl table_top">
+            <table data-bind="dataTable: { 
+                    options : {
+                        bPaginate: false,
+                        bProcessing: true,
+                        bInfo : false,
+                        bServerSide: true,
+                        bLengthChange  : false,
+                        bScrollCollapse: true,
+                        sAjaxSource : '/insurance/listPayment' ,
+                        aoColumns : payhistoryColumns
+                    }
+                }" class="table table-bordered">
+            </table>
+
+        </div>
+        <div class="last_reconcl">Last time you reconclied these payments: 01/08/2008</div>
+    </div>
+    <!-- ko with : notes -->
+    <!-- ko template : { html : template } -->
+    <!-- /ko -->
+    <!-- /ko -->
+</div>

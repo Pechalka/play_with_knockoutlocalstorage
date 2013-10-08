@@ -1,0 +1,55 @@
+
+                    <div class="address_cont">
+                        <div class="fleft">
+                            <h3>Finances | Insurance | Critical Illness</h3>
+                        </div>
+                        <div class="fright">
+                            <ul class="menu_supplier">
+                                <!-- ko if:tab == 'documents' -->
+                                <li>
+                                    <a title='delete folder/file' data-bind="click : remove" href="#/productInfo"><img src="/pages/img/suppl_cancel.png"></a></li>
+                                <li>
+                                    <a title='add folder' href='#' data-bind="click : edit"><img src="/pages/img/suppl_message.png"></a></li>
+                                <li>
+                                    <a title='show video tutorial' data-bind="click : showVideo" href="#"><img src="/pages/img/suppl_kino.png"></a></li>
+                                <!-- /ko -->
+                                <!-- ko if:tab != 'documents' -->
+                                <li>
+                                    <a title='edit insurance' href='#/insurance' ><img src="/pages/img/suppl_message.png"></a></li>
+                                <li>
+                                <li>
+                                    <a title='show video tutorial' data-bind="click : showVideo" href="#"><img src="/pages/img/suppl_kino.png"></a>
+                                </li>
+                                <!-- /ko -->
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="product_info ">
+                            <div class="product_parent">
+                                <div class="tabbable tabs-left">
+                                    <ul class="nav nav-tabs">
+                                        <li data-bind="css : { active : tab == 'home' }" class="active">
+                                            <a href="#/productInfo/home" ><img src="/pages/img/dom.png"></a>
+                                        </li>
+                                        <li  data-bind="css : { active : tab == 'payhistory' }" class="">
+                                            <a href="#/productInfo/payhistory" ><img src="/pages/img/payment_hist.png"></a>
+                                        </li>
+                                        <li  data-bind="css : { active : tab == 'contacts' }" class="">
+                                            <a href="#/productInfo/contacts" ><img src="/pages/img/cont_det.png"></a>
+                                        </li>
+                                        <li  data-bind="css : { active : tab == 'documents' }" class="">
+                                            <a href="#/productInfo/documents"><img src="/pages/img/doc_storage.png"></a>
+                                        </li>
+                                        <li  data-bind="css : { active : tab == 'compare' }" class="">
+                                            <a href="#/productInfo/compare" ><img src="/pages/img/Compare.png"></a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+<div class="tab-pane active">
+    <!-- ko with : content -->
+    <!-- ko template : { html : template } -->
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+
+                    </div>

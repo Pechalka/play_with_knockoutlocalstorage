@@ -1,0 +1,116 @@
+<style type="text/css">
+    .invalid{
+    background-color:red;
+    }
+</style>
+<div class="results bckg_page" id="content">
+    <div class="content" >
+        <div class="title_form"><span class="logo_sm"></span><span class="tittle title">Y&ouml;r - Income</span></div>
+        <div class="results_cont income_pages">
+            <div class="result_all">
+                <div class="result_left">
+                    <div class="radius_l left_inc">
+                        <div><img class="diagramm" src="img/diagramm.png" alt="diagramm"/></div>
+                        <div class="overflo inc_btns_blck income_scroll" data-bind="foreach:visibleCategories">
+                            <div class="clear"><input type="button" data-bind=" css:{'active_btn':$data.name==$parent.selectedCategory(),'done_btn':$data.isCompleted()==true}, value:$data.name ,click:$parent.selectCategoryClick" class=" sub fleft" value=""><div class="fright inc_check"><img data-bind="attr:{src:$data.imagePath}" src="img/checkb.png"></div></div>
+
+                        </div>
+                        <iframe class="banner" width="225" height="155"
+                                src="http://www.youtube.com/embed/XGSy3_Czz8k">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="result_right inc_right">
+                    <table class="inc_table ">
+                        <tbody>
+                        <tr class="inc_menu" data-bind="foreach:parts">
+                            <td>
+                                 <!-- ko if :  canClick-->
+                                <a  href="#" data-bind=" attr:{href:href},text:name">Home</a>
+                                <!-- /ko -->
+                                <!-- ko ifnot :  canClick-->
+                                <a  href="#/curentPage" data-bind="text:name">Home</a>
+                                <!-- /ko -->
+
+                            </td>
+                        </tr>
+                        <tr class="greens" data-bind="foreach:parts">
+                            <td class="green_line bordered_skot_left"data-bind="attr:{class:barStatus}, css : { bordered_skot_left : $index() ==0, bordered_skot_right : $index() == ($parent.parts().length -1) }"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="inc_top">
+                        <img class="middle inc_head" src="img/inc_head.png"> <h1 class="inline" data-bind="text : pageTitle">
+                        </h1>
+                        <span data-bind="text:total" class="total_summ"></span>
+                        <a href="#/registration2">add Member</a>
+                    </div>
+
+
+                    <div class="tabbable tabs-left income_table ">
+                        <ul class="nav nav-tabs bold_names" data-bind="foreach : members">
+                            <li  data-bind="css : { 'active' : $data == $parent.selectedMember() }, click : $parent.selectMember "><a href="#" data-toggle="tab" data-bind="text : $data"></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active scroll_table " id="home">
+                                <table cellpadding="0" cellspacing="0" border="0" class="display event inc_datat" width="100%">
+                                    <thead>
+                                    <tr class="tr_head">
+
+                                        <td></td>
+                                        <td class="text-left">Income Type</td>
+                                        <td>£</td>
+                                        <td>Frequency</td>
+                                        <td>Per month</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : visibleIncome">
+                                    <tr class="gradeC" data-bind="css:{'invalid':$data.isValid()==false}">
+                                        <td class="center"><a href="#" data-bind="click : $parent.addCopy"><img class="middle blue_plus" src="img/blue_plus.svg"></a></td>
+
+                                        <td class="left takehome" data-bind="text : name"></td>
+                                        <td class="center"><input type="text"  maxlength="10" class="input_table_sum" data-bind="value:value" placeholder=""></td>
+
+                                        <td class="center">
+                                            <select data-bind="options : $parent.frequencyList,value:$data.frequency, optionsCaption : 'Frequency'">
+                                            </select>
+                                        </td>
+                                        <td class="center" data-bind="text:inMonth">
+
+                                        </td>
+                                        <td class="center">
+                                            <!-- ko if: canDelete -->
+                                            <a href="#" data-bind="click : $parent.deleteIncome"><img class="middle blue_plus" src="img/delete.svg"></a>
+                                            <!-- /ko -->
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <span data-bind="visible:hasError">Error</span>
+                    </div>
+
+                    <div class="clear bott_butts">
+                        <div class="red_complete" >
+                            <p class="red_alert" data-bind="visible:hasError">*You need to fill/delete partially complete fields</p>
+                        </div>
+                        <div class="add_sport">
+
+                            <div class="fleft">
+                                <a class="add_another" data-bind="click : showPopupClick"><img class="middle green_plus" src="img/green_plus.svg"> Add another <span data-bind="text : selectedCategory"></span> type</a>
+                            </div>
+                            <div class="inline fright">
+                                <input type="button" data-bind="click:nextClick" class="btn_action button_next inline" value="FINISHED-NEXT">
+                                <input type="button" data-bind="click:skipClick" class="btn_action button_next inline" value="SKIP">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fright"><input type="button" class="button_save button_next" value="SAVE & EXIT" data-bind="click : saveAndExitClick"></div>
+        </div>
+    </div>
+</div>

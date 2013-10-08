@@ -1,0 +1,57 @@
+<script type="text/template" id="income-row">
+        <td class="selectRigth width160">
+            <select data-bind="optionsCaption: 'Choose...', options:$parent.banks, optionsText : 'name', optionsValue: 'id', value : bank.id "></select>
+        </td>
+        <td class="selectRigth width160" >
+            <select data-bind="optionsCaption: 'Choose...', options:$parent.accountTypes, optionsText : 'name', optionsValue: 'id', value : accountType.id "></select>
+        </td>
+
+        <td class="center" >
+            <input size="50" maxlength="50"  data-bind="value : purpose" type="text" class="input_table" placeholder="Type here...">
+        </td>
+
+        <td class="selectRigth width160">
+            <select data-bind="optionsCaption: 'Choose...', options:$parent.members, optionsText : 'firstName', optionsValue: 'id',  value : member ? member.id : ''"></select>
+        </td>
+
+        <td class="center" >
+            <input data-bind="value : balance"  size="9" maxlength="9" type="text" class="input_table" placeholder="Type here...">
+        </td>
+        <td class="center" >
+            <a href='#' data-bind="click : $parent.delete">delete</a>
+        </td>
+</script>
+
+
+<div class="income_bckgr">
+    <div class="income_top">
+        <span class="image"></span>
+        <div class="inline title_text">
+            <p class="title">Start Up Wizard</p>
+            <p class="under_title">Bank Accounts</p>
+        </div>
+    </div>
+    <div class="inputs button fright">
+        <input type="submit" class="button_inp" value="Add another account" data-bind="click : add" />
+    </div>
+</div>
+<div style="width: 900px" class="fixHeight">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%"
+data-bind="dataTable: { 
+    instance :  oTable,
+    options : {
+         sScrollY: '271px',
+         bPaginate: true,
+         bProcessing: true,
+         bInfo : false,
+         bServerSide: true,
+         bLengthChange  : false,
+         bScrollCollapse: false,
+         sAjaxSource : '/bankaccount/list' ,
+         aoColumns : columns,
+         buildRow : buildRow,
+         rowTemplate : 'income-row'
+        }
+    }">
+</table>
+</div>

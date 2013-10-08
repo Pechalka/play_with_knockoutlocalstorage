@@ -1,0 +1,138 @@
+<script type="text/template" id="transition-row">
+    <td class="center" data-bind="text : description"></td>
+    <td class="center" data-bind="text : date"></td>
+    <td class="center" data-bind="text : '£' + number"></td>
+    <td class="center"><img src="/pages/img/memo.png"></td>
+</script>
+
+<script type="text/template" id="task-row">
+<td class="center" data-bind="text : title"></td>
+<td class="center"><a data-bind="attr : { href : '#/tasks/' + id }"><p class='marker' href="#" data-toggle="tooltip" data-placement="top" title=""
+                                                              data-original-title="Golf Club
+Renew membership
+
+Call 01234 567 890
+Before: 01/09/2012">View </p><a/></td>
+</script>
+
+<script type="text/template" id="event-row">
+     <td class="center" data-bind="text : title"></td>
+     <td class="center" data-bind="text : start"></td>
+     <td class="center" data-bind="text : '£' + amount"></td>
+     <td class="center">
+        <a class='marker' href="#"><img src="/pages/img/memo.png"> </a>
+     </td>
+</script>
+
+<div class="overflo">
+    <div class="fleft">
+        <h2>Y&ouml;r - Home</h2>
+    </div>
+    <div class="fright">
+        <ul class="menu_supplier">
+            <li>
+                <a title="calendar" href="#/calendar">
+                    <img src="/pages/img/suppl_hat.png" />
+                </a>
+           </li>
+           <li>
+                <a title="address book" href="#/address">
+                    <img src="/pages/img/suppl_conv.png" />
+                </a>
+           </li>
+           <li>
+                <a title="wizards" href="#/registration2"><img src="/pages/img/suppl_message.png"></a>
+            </li>
+            <li>
+                <a title='show video tutorial' data-bind="click : showVideo" href="#"><img src="/pages/img/suppl_kino.png"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="dash_content">
+    <div class="dash_box marg_box">
+        <a data-toggle="modal" href="#myModal2" class="butt edit show_lists">Just PopUp Example</a>
+    </div>
+    <div class="dash_box">
+        <div class="dash_in">
+            <a href='#/events'><h3>Up & Coming Events</h3></a>
+
+            <table cellpadding="0" cellspacing="0" border="0" class="display example" id="" width="100%"
+            data-bind="dataTable : {
+                            instance :  eventDataTabe,
+                            options : {
+                                bProcessing: true,
+                                bServerSide: true,
+                                sAjaxSource : '/dashboard/event',
+                                fnServerParams : fnServerParamsTEvent,
+                                bPaginate: false,
+                                buildRow : buildEventRow,
+                                rowTemplate : 'event-row',
+                                bScrollCollapse : true,
+                                aoColumns : eventColumns
+                            }
+                        }">
+            </table>
+        </div>
+        <div class="dash_buttons">
+            <a data-bind="click : eventByDay" href="#" class="btn_gray">Day</a>
+            <a data-bind="click : teventBy2Weekly" href="#" class="btn_gray">2 Weekly</a>
+            <a data-bind="click : eventMonthly" href="#" class="btn_gray">Monthly</a>
+        </div>
+    </div>
+    <div class="dash_box marg_box">
+        <div class="dash_in">
+            <a href='#/tasks'><h3>Tasks</h3></a>
+            <table cellpadding="0" cellspacing="0" border="0" class="display example" id="tasks" width="100%"
+            data-bind="dataTable : {
+                            instance :  taskDataTabe,
+                            options : {
+                                bProcessing: true,
+                                bServerSide: true,
+                                sAjaxSource : '/dashboard/task',
+                                fnServerParams : fnServerParamsTTask,
+                                bPaginate: false,
+                                buildRow : buildTaskRow,
+                                rowTemplate : 'task-row',
+                                bScrollCollapse : true,
+                                aoColumns : taskColumns
+                            }
+                        }"
+                        >
+            
+        </table>
+        </div>
+        <div class="dash_buttons">
+            <a data-bind="click : taskByDay" href="#" class="btn_gray">Day</a>
+            <a data-bind="click : taskBy2Weekly" href="#" class="btn_gray">Week</a>
+            <a data-bind="click : taskMonthly" href="#" class="btn_gray">Monthly</a>
+        </div>
+    </div>
+    <div class="dash_box">
+         <div class="dash_in">
+            <a href='#/productInfo'><h3>Recent Transactions</h3></a>
+                <table cellpadding="0" cellspacing="0" border="0" class="display example" id="transitions" width="100%"
+                data-bind="dataTable : {
+                            instance :  transitionsDataTabe,
+                            options : {
+                                bProcessing: true,
+                                bServerSide: true,
+                                sAjaxSource : '/dashboard/transaction',
+                                fnServerParams : fnServerParamsTransaction,
+                                bPaginate: false,
+                                buildRow : buildTransitionRow,
+                                rowTemplate : 'transition-row',
+                                bScrollCollapse : true,
+                                aoColumns : transitionColumns
+                            }
+                        }">
+                </table>
+        </div>
+        <div class="dash_buttons">
+            <a data-bind="click : transitionsByDay" href="#" class="btn_gray">Day</a>
+            <a data-bind="click : transitionsBy2Weekly" href="#" class="btn_gray">2 Weekly</a>
+            <a data-bind="click : transitionsMonthly" href="#" class="btn_gray">Monthly</a>
+        </div>
+    </div>
+</div>

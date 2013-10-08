@@ -1,0 +1,79 @@
+
+                    <div class="address_cont">
+                        <div class="contacts_item" id="insurance">
+                            <div class="left_right" data-bind="with : insurance">
+                                <div class="fleft">
+                                    <div>
+                                        <p data-bind="validationMessage: lifeAssuarence" class="validationMessage" style="float:left"></p>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Life Assured:</span>
+                                        <input  size="80" maxlength="80" data-bind="value : lifeAssuarence" type="text" />
+                                    </div>
+                                    <div class="edit_info">
+                                        <span class="fleft names_task">Provider:</span>
+                                        <select data-bind="optionsCaption: 'Please select...', options : $parent.insuranceCompanies, optionsText:'name', optionsValue : 'id' ,value : insuranceCompany.id">
+                                        </select>
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Payment Date:</span>
+                                        <input size="20" maxlength="20" data-bind="value : paymentDate" type="text" />
+                                    </div>
+                                    <div class="edit_info"  id="date2">
+                                        <span class="fleft names_task">Frequency:</span>
+                                        <select style="width : 100px" data-bind="optionsCaption: 'Please select...', options : $parent.frequencyList, value : frequency">
+                                        </select>
+                                    </div>
+                                    <div class="edit_info"  id="date2">
+                                        <span class="fleft names_task">Paid From:</span>
+                                        <select data-bind="optionsCaption: 'Please select...', options : $parent.bankAccounts, optionsValue : 'id', optionsText : 'name', value : bankAccount.id">
+                                        </select>
+                                    </div> 
+                                    <div>
+                                        <p data-bind="validationMessage: cover" class="validationMessage" style="float:left"></p>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Cover:</span>
+                                        <input size="80" maxlength="80" data-bind="value : cover"  type="text" />
+                                    </div>
+                                    <div>
+                                        <p data-bind="validationMessage: policyNumber" class="validationMessage" style="float:left"></p>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Policy Number:</span>
+                                        <input size="80" maxlength="80" data-bind="value : policyNumber" type="text" /> 
+                                    </div>
+                                </div>
+                                <div class="fright task_btns">
+
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Start Date:</span>
+                                        <input data-bind="datepicker : startDate" type="text" /> 
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">End Date:</span>
+                                        <input  data-bind="datepicker : endDate" type="text" /> 
+                                    </div>
+                                    <div class="edit_info adress_page">
+                                        <span class="names_task">Payment Amount:</span>
+                                        <input size="80" maxlength="80" data-bind="value : paymentAmount" type="text" /> 
+                                    </div>      
+                                     <div class="edit_info adress_page">
+                                        <span class="names_task">Purpose</span>
+                                        <input size="80" maxlength="80" data-bind="value : purpose" type="text" /> 
+                                    </div>
+                                    <div class="inputs">
+                                        <input data-bind="click : $parent.save" type="button" value="Save" class="butt_add">
+                                    </div>
+                                </div>
+
+                            </div>
+                                <!-- ko with : notes -->
+                                <!-- ko template : { html : template } -->
+                                <!-- /ko -->
+                                <!-- /ko -->
+                        </div>
+                    </div>
